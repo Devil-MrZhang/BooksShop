@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<!-- 开启Spring annotation 支持  -->
+	<context:annotation-config />
+	<!-- 让Spring通过自动扫描来查询和管理Bean-->
+ 	<context:component-scan base-package="com.bookshop" /> 
+ 	
+ 	<!-- 1.配置sessionFactory , 引入hibernate配置文件-->
+ 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+ 		 <!-- 加载Hibernate核心配置文件 -->
+	     <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+ 	</bean>
+ 	 <!-- 2.配置Hibernate模版 -->
+ 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+ 		<property name="sessionFactory" ref="sessionFactory"></property>
+ 	</bean>
+ 	
+ 	
+ 	  <!-- 3.事务管理 -->
+     <!-- #1配置事务管理器 -->
+    <bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+<tx:annotation-driven transaction-manager="txManager"/>
+     <!-- #2配置事务的传播特性,配置通知点 -->
+     <tx:advice id="txAdvice" transaction-manager="txManager">
+           <tx:attributes>
+                <tx:method name="save*"  propagation="REQUIRED"/>
+                <tx:method name="update*"  propagation="REQUIRED"/>
+                <tx:method name="del*"  propagation="REQUIRED"/>
+                <!-- 只读 -->
+              
+           </tx:attributes>
+     </tx:advice>
+     <!-- #3设置那些类的哪些方法参与事务    -->
+     <aop:config>
+     		<!-- 配置切入点aop:pointcut -->
+            <aop:pointcut expression="execution(* com.hibernate.services.*.*(..))" id="allMethod" />
+            <!-- 将切入点与通知点关联 -->
+            <aop:advisor advice-ref="txAdvice" pointcut-ref="allMethod"/>
+     </aop:config>
+     
+     
+</beans>
