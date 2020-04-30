@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="com.bookshop.model.Books">
+    	<class name="Books" table="books" catalog="bookshop">
+    		<id name="bid" type="java.lang.Integer">
+    			<column name="bid"></column>
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="bookname" type="java.lang.String">
+            <column name="bookname" />
+      		</property>
+      		
+      		<property name="b_price" type="java.lang.Double">
+            <column name="b_price" />
+      		</property>
+      		
+      		<property name="image" type="java.lang.String">
+            <column name="image" />
+      		</property>
+      		
+      		<property name="stock" type="java.lang.Integer">
+            <column name="stock" />
+      		</property>
+    		
+    	</class>
+    </hibernate-mapping>
