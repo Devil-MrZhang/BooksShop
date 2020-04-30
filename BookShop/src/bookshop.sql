@@ -16,72 +16,77 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`bookshop` /*!40100 DEFAULT CHARACTER SE
 
 USE `bookshop`;
 
-/*Table structure for table `books` */
+/*Table structure for table `t_orderitem` */
 
-DROP TABLE IF EXISTS `books`;
+DROP TABLE IF EXISTS `t_orderitem`;
 
-CREATE TABLE `books` (
-  `BID` int(11) NOT NULL,
-  `BOOKNAME` varchar(100) NOT NULL,
-  `B_PRICE` varchar(10) NOT NULL,
-  `IMAGE` varchar(200) NOT NULL,
-  `STOCK` int(11) NOT NULL,
-  PRIMARY KEY (`BID`)
+CREATE TABLE `t_orderitem` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `buynum` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-/*Data for the table `books` */
+/*Data for the table `t_orderitem` */
 
-insert  into `books`(`BID`,`BOOKNAME`,`B_PRICE`,`IMAGE`,`STOCK`) values (27,'泰戈尔诗集','18.00','images/book/book_01.gif',976),(28,'痕记','22.80','images/book/book_02.gif',977),(29,'天堂之旅','25.00','images/book/book_03.gif',989),(30,'钱钟书集','332.50','images/book/book_04.gif',999),(31,'赵俪生高昭—夫妻回忆录','38.00','images/book/book_05.gif',998),(32,'无聊斋','28.00','images/book/book_06.gif',998),(33,'一颗热土豆是一张温馨的床','38.00','images/book/book_07.gif',999),(34,'李戡戡乱记','22.00','images/book/book_08.gif',999),(35,'生生世世未了缘','17.50','images/book/book_09.gif',999),(36,'一生有多少爱','17.50','images/book/book_10.gif',944);
+/*Table structure for table `t_orders` */
 
-/*Table structure for table `items` */
+DROP TABLE IF EXISTS `t_orders`;
 
-DROP TABLE IF EXISTS `items`;
-
-CREATE TABLE `items` (
-  `IID` int(11) NOT NULL,
-  `OID` int(11) NOT NULL,
-  `BID` int(11) NOT NULL,
-  `CREATEDATE` varchar(50) NOT NULL,
-  `COUNT` int(11) NOT NULL,
-  `PRICE` varchar(50) NOT NULL,
-  `STATE` int(11) NOT NULL,
-  `TOTAL_PRICE` varchar(50) NOT NULL,
-  PRIMARY KEY (`IID`)
+CREATE TABLE `t_orders` (
+  `id` int(11) NOT NULL,
+  `money` double NOT NULL,
+  `receiverName` varchar(20) DEFAULT NULL,
+  `receiverPhone` varchar(20) DEFAULT NULL,
+  `payState` int(11) DEFAULT NULL,
+  `ordertime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) DEFAULT NULL,
+  `receiverAddress` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-/*Data for the table `items` */
+/*Data for the table `t_orders` */
 
-insert  into `items`(`IID`,`OID`,`BID`,`CREATEDATE`,`COUNT`,`PRICE`,`STATE`,`TOTAL_PRICE`) values (84,81,31,'2010-11-18 10:24:15',4,'152',0,'605.1'),(82,81,29,'2010-11-18 10:24:15',3,'75',0,'605.1'),(83,81,30,'2010-11-18 10:24:15',1,'332.5',0,'605.1'),(81,81,28,'2010-11-18 10:24:15',2,'45.6',0,'605.1'),(65,61,32,'2010-11-15 10:12:05',1,'28',0,'143.5'),(61,61,33,'2010-11-15 10:12:05',1,'38',0,'143.5'),(64,61,31,'2010-11-15 10:12:05',1,'38',0,'143.5'),(62,61,34,'2010-11-15 10:12:05',1,'22',0,'143.5'),(63,61,35,'2010-11-15 10:12:05',1,'17.5',0,'143.5'),(1001,1001,27,'2013-04-07 19:25:21',1,'18',0,'18'),(1002,1002,27,'2013-04-07 19:58:54',4,'72',0,'72'),(1004,1004,27,'2013-04-07 20:09:30',1,'18',0,'40.8'),(1005,1004,28,'2013-04-07 20:09:30',1,'22.8',0,'40.8'),(1006,1005,28,'2013-04-07 20:37:42',4,'91.2',0,'91.2'),(1003,1003,27,'2013-04-07 20:00:33',1,'18',0,'18');
+/*Table structure for table `t_product` */
 
-/*Table structure for table `orders` */
+DROP TABLE IF EXISTS `t_product`;
 
-DROP TABLE IF EXISTS `orders`;
-
-CREATE TABLE `orders` (
-  `OID` int(11) NOT NULL,
-  `USERNAME` varchar(50) NOT NULL,
-  PRIMARY KEY (`OID`)
+CREATE TABLE `t_product` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `price` varchar(10) NOT NULL,
+  `img_url` varchar(200) NOT NULL,
+  `pnum` int(11) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-/*Data for the table `orders` */
+/*Data for the table `t_product` */
 
-insert  into `orders`(`OID`,`USERNAME`) values (81,'test'),(61,'test'),(1001,'test'),(1002,'test'),(1004,'test'),(1005,'wangxiao'),(1003,'test');
+insert  into `t_product`(`id`,`name`,`price`,`img_url`,`pnum`,`category`,`description`) values (27,'泰戈尔诗集','18.00','images/book/book_01.gif',976,'文学','ffffff'),(28,'痕记','22.80','images/book/book_02.gif',977,'科学','fffffffff'),(29,'天堂之旅','25.00','images/book/book_03.gif',989,'呵呵','fffffffffff'),(30,'钱钟书集','332.50','images/book/book_04.gif',999,'aaa','ffffffffffff'),(31,'赵俪生高昭—夫妻回忆录','38.00','images/book/book_05.gif',998,'sss','fffffffffff'),(32,'无聊斋','28.00','images/book/book_06.gif',998,'ddd','gggggggg'),(33,'一颗热土豆是一张温馨的床','38.00','images/book/book_07.gif',999,'ccc','ggggggggggg'),(34,'李戡戡乱记','22.00','images/book/book_08.gif',999,'vvv','hhhhhhhhh'),(35,'生生世世未了缘','17.50','images/book/book_09.gif',999,'xxx','aaaaaaaaa'),(36,'一生有多少爱','17.50','images/book/book_10.gif',944,'vvv','sssssss');
 
-/*Table structure for table `userinfo` */
+/*Table structure for table `t_user` */
 
-DROP TABLE IF EXISTS `userinfo`;
+DROP TABLE IF EXISTS `t_user`;
 
-CREATE TABLE `userinfo` (
-  `ID` int(10) NOT NULL AUTO_INCREMENT,
-  `USERNAME` varchar(50) NOT NULL,
-  `PASSWORD` varchar(50) NOT NULL,
-  `EMAIL` varchar(50) NOT NULL,
-  PRIMARY KEY (`ID`)
+CREATE TABLE `t_user` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `telephone` varchar(20) NOT NULL,
+  `introduce` varchar(100) NOT NULL,
+  `role` int(11) NOT NULL DEFAULT '1',
+  `gender` varchar(10) NOT NULL,
+  `registerTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
-/*Data for the table `userinfo` */
+/*Data for the table `t_user` */
 
-insert  into `userinfo`(`ID`,`USERNAME`,`PASSWORD`,`EMAIL`) values (1,'test3','aaaaaaaa','test@163.com'),(2,'test2','aaaaaaaa','test2@163.com'),(3,'test4','aaaaaaaa','test2@163.com'),(4,'test007','12312312','test007@aptech.com.cn'),(5,'test321','aaaaaaaa','aa@com.cm'),(6,'test008','aaaaaaaa','test008@1.c'),(7,'user1','aaaaaaaa','user1@aptech.com.cn'),(8,'test','test','test@test.com'),(9,'user123','12312312','user123@123.com'),(10,'wangxiao','12345678','123@asd.com'),(11,'admin','admin','admin@qq.com'),(12,'123','12345678','1184791118@qq.com'),(13,'zhangjiabao','12345678','222@qq.com'),(14,'yyyy','yyyyyyyy','yy@qq.com');
+insert  into `t_user`(`id`,`username`,`password`,`email`,`telephone`,`introduce`,`role`,`gender`,`registerTime`) values (1,'test3','aaaaaaaa','test@163.com','','',1,'','2020-04-30 19:29:18'),(2,'test2','aaaaaaaa','test2@163.com','','',1,'','2020-04-30 19:29:18'),(3,'test4','aaaaaaaa','test2@163.com','','',1,'','2020-04-30 19:29:18'),(4,'test007','12312312','test007@aptech.com.cn','','',1,'','2020-04-30 19:29:18'),(5,'test321','aaaaaaaa','aa@com.cm','','',1,'','2020-04-30 19:29:18'),(6,'test008','aaaaaaaa','test008@1.c','','',1,'','2020-04-30 19:29:18'),(7,'user1','aaaaaaaa','user1@aptech.com.cn','','',1,'','2020-04-30 19:29:18'),(8,'test','test','test@test.com','','',1,'','2020-04-30 19:29:18'),(9,'user123','12312312','user123@123.com','','',1,'','2020-04-30 19:29:18'),(10,'wangxiao','12345678','123@asd.com','','',1,'','2020-04-30 19:29:18'),(11,'admin','admin','admin@qq.com','','',1,'','2020-04-30 19:29:18'),(12,'123','12345678','1184791118@qq.com','','',1,'','2020-04-30 19:29:18'),(13,'zhangjiabao','12345678','222@qq.com','','',1,'','2020-04-30 19:29:18'),(14,'yyyy','yyyyyyyy','yy@qq.com','','',1,'','2020-04-30 19:29:18');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

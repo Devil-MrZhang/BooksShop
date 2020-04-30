@@ -89,6 +89,7 @@ public abstract class BaseHibernateDAO<T> {
 	 * @return
 	 */
 	protected List<T> getAll() {
+		System.out.println("******"+clazzName);
 		return (List<T>)hibernateTemplate.find("from " + clazzName);
 	}
 

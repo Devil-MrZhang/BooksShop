@@ -3,13 +3,16 @@
  */
 package com.bookshop.service;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bookshop.dao.ProductDao;
-import com.bookshop.model.User;
+import com.bookshop.model.Product;
 
 /**
  * @author 张家宝
@@ -21,7 +24,11 @@ import com.bookshop.model.User;
 
 public class ProductService {
 	@Resource
-	private ProductDao userDao;
+	private ProductDao productDao;
 	
+	public List<Product> findAll() {
+		
+		return productDao.findAll();
+	}
 	
 }

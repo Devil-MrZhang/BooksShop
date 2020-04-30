@@ -8,6 +8,8 @@
 </head>
 <body>
 
-<a href="${pageContext.request.contextPath }/test/TestAction">Struts2测试连接</a>
+	<%
+		response.sendRedirect(request.getContextPath()+"/admin/AdminAction");
+	%>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="s" uri="/struts-tags" %>
 <HTML>
 <HEAD>
 <meta http-equiv="Content-Language" content="zh-cn">
@@ -122,20 +122,21 @@
 								<td width="8%" align="center">删除</td>
 							</tr>
 
-			<c:forEach items="${books }" var="b">							
-								<tr onmouseover="this.style.backgroundColor = 'white'"
+						<s:iterator value="books" var="book">
+						
+							<tr onmouseover="this.style.backgroundColor = 'white'"
 									onmouseout="this.style.backgroundColor = '#F5FAFE';">
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="23"><input type="checkbox" name="ids" value=""/></td>
+										width="23"><input type="checkbox" name="ids" value="${book.id}"/></td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="23"></td>
+										width="23">${book.id }</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="18%"></td>
+										width="18%">${book.name }</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="8%"></td>
+										width="8%">${book.price }</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="8%"></td>
-									<td style="CURSOR: hand; HEIGHT: 22px" align="center"></td>
+										width="8%">${book.pnum }</td>
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center">${book.category}</td>
 									
 									<td align="center" style="HEIGHT: 22px" width="7%"><a
 										href="#">
@@ -153,7 +154,8 @@
 									</a>
 									</td>
 								</tr>
-					</c:forEach>	
+						  
+						</s:iterator>
 						</table>
 					</td>
 				</tr>

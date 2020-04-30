@@ -3,7 +3,9 @@
  */
 package com.bookshop.dao;
 
-import com.bookshop.model.User;
+import java.util.List;
+
+import com.bookshop.model.Product;
 
 /**
  * @author 张家宝
@@ -11,5 +13,12 @@ import com.bookshop.model.User;
  * @describe 
  */
 public interface ProductDao {
-
+	/**
+	 * 
+	 *@date 2020年4月30日
+	  @describe 查询所有产品
+	 */
+	public List<Product> findAll(); 
+		
+	
 }
