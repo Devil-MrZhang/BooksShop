@@ -10,6 +10,6 @@ import com.bookshop.model.User;
  * @data 2020年4月28日 上午10:54:08
  * @describe 
  */
-public interface UserDao {
-	public void add(User user); 
+public interface ProductDao {
+
 }

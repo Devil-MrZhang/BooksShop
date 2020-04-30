@@ -5,7 +5,7 @@ package com.bookshop.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-import com.bookshop.dao.UserDao;
+import com.bookshop.dao.ProductDao;
 import com.bookshop.model.User;
 
 /**
@@ -14,12 +14,8 @@ import com.bookshop.model.User;
  * @describe 
  */
 @Repository("userDao")
-public class UserDaoimpl extends BaseHibernateDAO<User> implements UserDao {
+public class ProductDaoimpl extends BaseHibernateDAO<User> implements ProductDao {
 
-	@Override
-	public void add(User user) {
-		
-		saveOrUpdate(user);
-	}
+	
 
 }

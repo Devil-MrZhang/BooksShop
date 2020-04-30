@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bookshop.dao.UserDao;
+import com.bookshop.dao.ProductDao;
 import com.bookshop.model.User;
 
 /**
@@ -19,11 +19,9 @@ import com.bookshop.model.User;
 @Transactional
 @Service
 
-public class UserService {
+public class ProductService {
 	@Resource
-	private UserDao userDao;
+	private ProductDao userDao;
 	
-	public void add(User user) {
-		userDao.add(user);
-	}
+	
 }

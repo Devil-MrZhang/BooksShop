@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.bookshop.model.User;
-import com.bookshop.service.UserService;
+import com.bookshop.service.ProductService;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -20,16 +20,12 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 @Controller
 @Scope("prototype")
-public class TestAction extends ActionSupport {
+public class AdminAction extends ActionSupport {
 	@Resource
-	private UserService service;
+	private ProductService service;
 	
 	public String execute() throws Exception {
 	
-		User user=new User();
-		user.setName("zhansgan");
-		user.setPassword("1234");
-		service.add(user);
 		
 		return "success";
 	}
