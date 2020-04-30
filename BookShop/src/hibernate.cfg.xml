@@ -11,10 +11,10 @@
         <property name="dialect">org.hibernate.dialect.Oracle9Dialect</property> --> 
         
         <!-- hibernate的基本信息 -->
-        <property name="connection.url">jdbc:mysql://localhost/ee19day02?useSSL=true</property>
+        <property name="connection.url">jdbc:mysql://localhost/bookshop?useSSL=true</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">1234</property>
+        <property name="connection.password">root</property>
         
         <!-- hibernate使用的数据库方言 -->
          <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -30,6 +30,7 @@
  		<property name="hibernate.c3p0.min_size">10</property>
  		
  		    <mapping resource="com/bookshop/model/User.hbm.xml"/>
+ 		    <mapping resource="com/bookshop/model/Books.hbm.xml"/>
       </session-factory>
  	
 </hibernate-configuration>       
