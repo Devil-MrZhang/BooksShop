@@ -21,7 +21,6 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 @Transactional
 @Service
-
 public class ProductService extends ActionSupport{
 	@Resource
 	private ProductDao productDao;
@@ -37,7 +36,7 @@ public class ProductService extends ActionSupport{
 		
 	}
 	
-	public String addBooks(Integer id,String name,Double price,String img_url,Integer pnum,String category,String description){
+	public void addBooks(Integer id,String name,Double price,String img_url,Integer pnum,String category,String description){
 		p.setId(id);
 		p.setName(name);
 		p.setPrice(price);
@@ -46,7 +45,7 @@ public class ProductService extends ActionSupport{
 		p.setCategory(category);
 		p.setDescription(description);
 		productDao.add(p);
-		return SUCCESS;
+		
 		
 	}
 }
