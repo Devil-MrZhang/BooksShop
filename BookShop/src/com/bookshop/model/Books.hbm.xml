@@ -3,25 +3,33 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
     <hibernate-mapping package="com.bookshop.model.Books">
-    	<class name="Books" table="books" catalog="bookshop">
-    		<id name="bid" type="java.lang.Integer">
-    			<column name="bid"></column>
+    	<class name="Books" table="t_product" catalog="bookshop">
+    		<id name="id" type="java.lang.Integer">
+    			<column name="id"></column>
     			<generator class="native"></generator>
     		</id>
-    		<property name="bookname" type="java.lang.String">
-            <column name="bookname" />
+    		<property name="name" type="java.lang.String">
+            <column name="name" />
       		</property>
       		
-      		<property name="b_price" type="java.lang.Double">
-            <column name="b_price" />
+      		<property name="price" type="java.lang.Double">
+            <column name="price" />
       		</property>
       		
-      		<property name="image" type="java.lang.String">
-            <column name="image" />
+      		<property name="img_url" type="java.lang.String">
+            <column name="img_url" />
       		</property>
       		
-      		<property name="stock" type="java.lang.Integer">
-            <column name="stock" />
+      		<property name="pnum" type="java.lang.Integer">
+            <column name="pnum" />
+      		</property>
+      		
+      		<property name="category" type="java.lang.String">
+            <column name="category" />
+      		</property>
+      		
+      		<property name="description" type="java.lang.String">
+            <column name="description" />
       		</property>
     		
     	</class>

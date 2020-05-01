@@ -48,7 +48,7 @@
      <!-- #3设置那些类的哪些方法参与事务    -->
      <aop:config>
      		<!-- 配置切入点aop:pointcut -->
-            <aop:pointcut expression="execution(* com.hibernate.services.*.*(..))" id="allMethod" />
+            <aop:pointcut expression="execution(* com.hibernate.service.*.*(..))" id="allMethod" />
             <!-- 将切入点与通知点关联 -->
             <aop:advisor advice-ref="txAdvice" pointcut-ref="allMethod"/>
      </aop:config>
