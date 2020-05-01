@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bookshop.dao.ProductDao;
 import com.bookshop.model.Product;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author 张家宝
@@ -20,12 +21,13 @@ import com.bookshop.model.Product;
  * @describe 
  */
 @Transactional
-@Service
+@Service("service")
+public class ProductService{
 
-public class ProductService {
+
 	@Resource
 	private ProductDao productDao;
-	
+	private Product p;
 	public List<Product> findAll() {
 		
 		return productDao.findAll();
@@ -45,4 +47,18 @@ public class ProductService {
 		
 	}
 	
+
+	public void addBooks(Integer id,String name,Double price,String img_url,Integer pnum,String category,String description){
+		p.setId(id);
+		p.setName(name);
+		p.setPrice(price);
+		p.setImg_url(img_url);
+		p.setPnum(pnum);
+		p.setCategory(category);
+		p.setDescription(description);
+		productDao.add(p);
+		
+		
+	}
+
 }

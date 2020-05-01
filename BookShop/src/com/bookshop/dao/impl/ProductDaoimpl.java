@@ -26,6 +26,16 @@ public class ProductDaoimpl extends BaseHibernateDAO<Product> implements Product
 	}
 
 	@Override
+	public void add(Product p) {
+		// TODO Auto-generated method stub
+		saveOrUpdate(p);
+	}
+
+	@Override
+	public void update(Product p) {
+		// TODO Auto-generated method stub
+		saveOrUpdate(p);
+	}
 	public List<Product> check(String sql) {
 		// TODO Auto-generated method stub
 		return super.find(sql);

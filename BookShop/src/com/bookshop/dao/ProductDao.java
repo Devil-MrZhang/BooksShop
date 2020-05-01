@@ -19,8 +19,15 @@ public interface ProductDao {
 	  @describe 查询所有产品
 	 */
 	public List<Product> findAll(); 
+
+		
+	public void add(Product p);
+	
+	public void update(Product p);
+
 	//按条件查询
 	public List<Product> check(String sql); 
+
 	/**
 	 * 
 	 *@date 2020年5月1日
@@ -33,5 +40,6 @@ public interface ProductDao {
 	  @describe 删除选中的书
 	 */
 	public void delAll(String[] ids);
+
 	
 }	
