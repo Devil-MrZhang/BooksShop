@@ -25,6 +25,18 @@ public class ProductDaoimpl extends BaseHibernateDAO<Product> implements Product
 		return getAll()	;
 	}
 
+	@Override
+	public void add(Product p) {
+		// TODO Auto-generated method stub
+		saveOrUpdate(p);
+	}
+
+	@Override
+	public void update(Product p) {
+		// TODO Auto-generated method stub
+		saveOrUpdate(p);
+	}
+
 	
 
 }

@@ -20,5 +20,8 @@ public interface ProductDao {
 	 */
 	public List<Product> findAll(); 
 		
+	public void add(Product p);
+	
+	public void update(Product p);
 	
 }

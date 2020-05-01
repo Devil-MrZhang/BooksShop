@@ -32,7 +32,6 @@
 
  		    <mapping resource="com/bookshop/model/Product.hbm.xml"/>
 
-
       </session-factory>
  	
 </hibernate-configuration>       
