@@ -31,6 +31,11 @@ public class ProductService extends ActionSupport{
 		
 		return productDao.findAll();
 	}
+	//按条件查询
+	public List<Product> check(String sql){
+		return productDao.check(sql);
+		
+	}
 	
 	public String addBooks(Integer id,String name,Double price,String img_url,Integer pnum,String category,String description){
 		p.setId(id);
