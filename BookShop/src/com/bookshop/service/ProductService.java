@@ -23,7 +23,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @Transactional
 @Service
 
-public class ProductService extends ActionSupport{
+public class ProductService{
 
 
 	@Resource
