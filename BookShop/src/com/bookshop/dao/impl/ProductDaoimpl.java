@@ -25,6 +25,14 @@ public class ProductDaoimpl extends BaseHibernateDAO<Product> implements Product
 		return getAll()	;
 	}
 
+	@Override
+	public List<Product> check(String sql) {
+		// TODO Auto-generated method stub
+		return super.find(sql);
+	}
+
+
+
 	
 
 }

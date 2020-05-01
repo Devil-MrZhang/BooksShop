@@ -19,6 +19,7 @@ public interface ProductDao {
 	  @describe 查询所有产品
 	 */
 	public List<Product> findAll(); 
-		
+	//按条件查询
+	public List<Product> check(String sql); 
 	
 }

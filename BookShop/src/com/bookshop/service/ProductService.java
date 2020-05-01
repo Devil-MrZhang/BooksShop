@@ -30,5 +30,10 @@ public class ProductService {
 		
 		return productDao.findAll();
 	}
+	//按条件查询
+	public List<Product> check(String sql){
+		return productDao.check(sql);
+		
+	}
 	
 }

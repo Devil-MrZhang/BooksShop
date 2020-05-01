@@ -15,7 +15,7 @@
 <body>
 	<br>
 	<form id="Form1" name="Form1"
-		action="#"
+		action="./CheckAction"
 		method="post">
 		<table cellSpacing="1" cellPadding="0" width="100%" align="center"
 			bgColor="#f5fafe" border="0">
@@ -32,7 +32,7 @@
 								<td height="22" align="center" bgColor="#f5fafe" class="ta_01">
 									商品编号</td>
 								<td class="ta_01" bgColor="#ffffff"><input type="text"
-									name="id" size="15" value="" id="Form1_userName" class="bg" />
+									name="cid" size="15" value="" id="Form1_userName" class="bg" />
 								</td>
 								<td height="22" align="center" bgColor="#f5fafe" class="ta_01">
 									类别：</td>
@@ -60,7 +60,7 @@
 								<td height="22" align="center" bgColor="#f5fafe" class="ta_01">
 									商品名称：</td>
 								<td class="ta_01" bgColor="#ffffff"><input type="text"
-									name="name" size="15" value="" id="Form1_userName" class="bg" />
+									name="cname" size="15" value="" id="Form1_userName" class="bg" />
 								</td>
 								<td height="22" align="center" bgColor="#f5fafe" class="ta_01">
 									价格区间(元)：</td>
@@ -87,7 +87,8 @@
 							</tr>
 						</table>
 					</td>
-
+</form>
+	<form id="Form2" name="Form2" action="#" method="post">
 				</tr>
 				<tr>
 					<td class="ta_01" align="center" bgColor="#afd1f3"><strong>商品列表</strong>
