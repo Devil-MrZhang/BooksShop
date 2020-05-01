@@ -32,6 +32,21 @@ public class ProductDaoimpl extends BaseHibernateDAO<Product> implements Product
 	}
 
 
+	@Override
+	public void delBook(int id) {
+		super.del(id);
+		
+	}
+	@Override
+	public void delAll(String[] ids) {
+		for (int i = 0; i < ids.length; i++) {
+			int id=Integer.parseInt(ids[i]);
+			super.del(id);
+		}
+		
+	}
+
+
 
 	
 

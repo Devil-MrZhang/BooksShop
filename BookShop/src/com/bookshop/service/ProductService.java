@@ -35,5 +35,14 @@ public class ProductService {
 		return productDao.check(sql);
 		
 	}
+	public void delBookById(int id) {
+		productDao.delBook(id);
+	}
+	
+	public void delAllBooks(String[] ids) {
+		
+		productDao.delAll(ids);
+		
+	}
 	
 }

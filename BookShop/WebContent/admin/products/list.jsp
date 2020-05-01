@@ -10,6 +10,41 @@
 	src="${pageContext.request.contextPath}/admin/js/public.js"></script>
 <script type="text/javascript">
 	
+
+	
+	function checkAll() {
+		
+		var flag=document.getElementById("ckAll").checked;
+	
+		var ids=document.getElementsByName("ids");
+		for (var i = 0; i < ids.length; i++) {
+			ids[i].checked=flag;
+		}
+	}
+	
+	function delAllBooks(){
+		var ids=document.getElementsByName("ids");
+		var str="";
+		for (var i = 0; i < ids.length; i++) {
+			if (ids[i].checked) {
+				str+="ids="+ids[i].value+"&";
+			}
+		}
+		if(str!=""){
+			
+			if(confirm("是否要删除所选中的书籍?")){
+				str=str.substring(0,str.length-1);
+				location.href="${pageContext.request.contextPath}/admin/AdminAction_delAll?"+str;
+			}
+			
+		}else{
+			alert("请选择要删除的书籍")
+		}
+		
+		
+		
+		
+	}
 </script>
 </HEAD>
 <body>
@@ -101,7 +136,7 @@
 						</button>
 						
 						<button type="button" id="add" name="add" value="&#28155;&#21152;"
-							class="button_add" onclick="addProduct()">&#28155;&#21152;
+							class="button_add" onclick="">&#28155;&#21152;
 						</button>
 					</td>
 				</tr>
@@ -147,7 +182,7 @@
 									</td>
 
 									<td align="center" style="HEIGHT: 22px" width="7%"><a
-										href="#">
+										href="${pageContext.request.contextPath}/admin/AdminAction_delBook?cid=${book.id }">
 											<img
 												src="${pageContext.request.contextPath}/admin/images/i_del.gif" 
 											width="16" height="16" border="0" style="CURSOR: hand">

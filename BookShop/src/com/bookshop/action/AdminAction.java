@@ -6,8 +6,11 @@ package com.bookshop.action;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -26,6 +29,15 @@ public class AdminAction extends ActionSupport {
 	@Resource
 	private ProductService service;
 	private List<Product> books;
+	
+	private HttpServletRequest request;
+	private HttpSession session;
+	
+	public AdminAction() {
+		request=ServletActionContext.getRequest();
+		session=request.getSession();
+	}
+	
 	//商品id
 	private int cid;
 	//商品类别
@@ -37,12 +49,15 @@ public class AdminAction extends ActionSupport {
 	//最大价
 	private int maxprice;
 	
+
+	
+	
 	
 
 	public String execute() throws Exception {
 		books=service.findAll();
 		System.out.println(books);
-		return "success";
+		return "list";
 	}
 	public String check(){
 		
@@ -52,14 +67,31 @@ public class AdminAction extends ActionSupport {
 		
 		return "check";
 	}
+	/**
+	 * 
+	 *@date 2020年5月1日
+	  @describe 删除书
+	 */
+	public String delBook() {
+		System.out.println("*****del*****"+cid);
+		service.delBookById(cid);
+		
+		return "del";
+		
+	}
+	/**
+	 * 
+	 *@date 2020年5月1日
+	  @describe  删除所选中 的书
+	 */
+	public String delAll() {
+		String[] ids = request.getParameterValues("ids");
+		service.delAllBooks(ids);
+		
+		return "delAll";
+	}
 	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	public List<Product> getBooks() {
 		return books;
@@ -104,5 +136,7 @@ public class AdminAction extends ActionSupport {
 	public void setMaxprice(int maxprice) {
 		this.maxprice = maxprice;
 	}
+	
+
 	
 }
