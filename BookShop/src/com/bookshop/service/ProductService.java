@@ -3,6 +3,7 @@
  */
 package com.bookshop.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bookshop.dao.ProductDao;
 import com.bookshop.model.Product;
-import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author 张家宝
@@ -21,11 +21,14 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 @Transactional
 @Service
+
 public class ProductService extends ActionSupport{
+
+public class ProductService {
+
 	@Resource
 	private ProductDao productDao;
 	
-	private Product p;
 	public List<Product> findAll() {
 		
 		return productDao.findAll();
