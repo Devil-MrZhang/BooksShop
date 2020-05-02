@@ -16,6 +16,10 @@
 		<action name="CheckAction" class="com.bookshop.action.AdminAction" method="check">
 			<result name="check">/admin/products/list.jsp</result>
 		</action>
+		
+		<action name="addAction_*" class="com.bookshop.action.AdminAction" method="{1}">
+			<result name="addBooks">/admin/products/list.jsp</result>
+		</action>
 	</package>
 	
 </struts>

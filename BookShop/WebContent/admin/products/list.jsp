@@ -8,9 +8,8 @@
 	rel="stylesheet" type="text/css" />
 <script language="javascript"
 	src="${pageContext.request.contextPath}/admin/js/public.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/jquery/jquery.js"></script>
 <script type="text/javascript">
-	
-
 	
 	function checkAll() {
 		
@@ -134,10 +133,7 @@
 					<button type="button" id="add" name="add" value="批量删除"
 							class="button_add" onclick="delAllBooks()">批量删除
 						</button>
-						
-						<button type="button" id="add" name="add" value="&#28155;&#21152;"
-							class="button_add" onclick="">&#28155;&#21152;
-						</button>
+						<input type="button" onclick="window.location.href='products/add.jsp'" value="添加"/>
 					</td>
 				</tr>
 				<tr>

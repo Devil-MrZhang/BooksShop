@@ -18,6 +18,8 @@ import com.bookshop.model.Product;
 import com.bookshop.service.ProductService;
 import com.opensymphony.xwork2.ActionSupport;
 
+import net.sf.json.JSONObject;
+
 /**
  * @author 张家宝
  * @data 2020年4月29日 下午5:57:28
@@ -29,10 +31,9 @@ public class AdminAction extends ActionSupport {
 	@Resource
 	private ProductService service;
 	private List<Product> books;
-	
 	private HttpServletRequest request;
 	private HttpSession session;
-	
+	private Product p;
 	public AdminAction() {
 		request=ServletActionContext.getRequest();
 		session=request.getSession();
@@ -48,6 +49,7 @@ public class AdminAction extends ActionSupport {
 	private int minprice;
 	//最大价
 	private int maxprice=1000;
+	
 	
 
 	
@@ -104,7 +106,15 @@ public class AdminAction extends ActionSupport {
 		return "delAll";
 	}
 	
-
+	/**
+	 * 添加书
+	 * @return
+	 */
+	public String addBooks(){
+		
+		service.addBooks(p);
+		return "addBooks";
+	}
 	
 	public List<Product> getBooks() {
 		return books;
@@ -149,7 +159,12 @@ public class AdminAction extends ActionSupport {
 	public void setMaxprice(int maxprice) {
 		this.maxprice = maxprice;
 	}
-	
+	public Product getP() {
+		return p;
+	}
+	public void setP(Product p) {
+		this.p = p;
+	}
 
 	
 }

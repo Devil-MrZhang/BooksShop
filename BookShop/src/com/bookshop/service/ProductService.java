@@ -47,15 +47,10 @@ public class ProductService{
 	}
 	
 
-	public void addBooks(Integer id,String name,Double price,String img_url,Integer pnum,String category,String description){
-		p.setId(id);
-		p.setName(name);
-		p.setPrice(price);
-		p.setImg_url(img_url);
-		p.setPnum(pnum);
-		p.setCategory(category);
-		p.setDescription(description);
-		productDao.add(p);
+	public Product addBooks(Product p){
+		
+		
+		return productDao.add(p);
 		
 		
 	}
