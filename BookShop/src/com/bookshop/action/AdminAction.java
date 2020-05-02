@@ -47,7 +47,7 @@ public class AdminAction extends ActionSupport {
 	//最小价
 	private int minprice;
 	//最大价
-	private int maxprice;
+	private int maxprice=1000;
 	
 
 	
@@ -59,14 +59,27 @@ public class AdminAction extends ActionSupport {
 		System.out.println(books);
 		return "list";
 	}
-	public String check(){
-		
-		System.out.println("++++++++++++++++++"+maxprice+minprice+cname+cid+category);
-		String sql="from Product";
-		books=service.check(sql);
-		
+	/*
+	 * 申
+	 * 
+	 * */
+	public String check() {
+		String add = "price > " + minprice + " and id > " + cid + " and price < " + maxprice;
+
+		if (!category.equals("")) {
+
+			add = add + " and category ='" + category + "'";
+		}
+		if (!cname.equals("")) {
+			add = add + " and name like '%" + cname + "%'";
+		}
+
+		String sql = "from Product  where " + add;
+		books = service.check(sql);
+		System.out.println(books);
 		return "check";
 	}
+
 	/**
 	 * 
 	 *@date 2020年5月1日
