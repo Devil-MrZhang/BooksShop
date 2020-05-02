@@ -7,8 +7,10 @@
 	
 	<package name="admin" namespace="/admin" extends="struts-default">
 	
-		<action name="AdminAction" class="com.bookshop.action.AdminAction" method="execute">
-			<result name="success">/admin/products/list.jsp</result>
+		<action name="AdminAction_*" class="com.bookshop.action.AdminAction" method="{1}">
+			<result name="list">/admin/products/list.jsp</result>
+			<result type="redirectAction" name="del">AdminAction_execute</result>
+			<result type="redirectAction" name="delAll">AdminAction_execute</result>
 		</action>
 		
 		<action name="CheckAction" class="com.bookshop.action.AdminAction" method="check">

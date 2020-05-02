@@ -3,7 +3,6 @@
  */
 package com.bookshop.service;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bookshop.dao.ProductDao;
 import com.bookshop.model.Product;
-import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @author 张家宝
@@ -21,8 +19,8 @@ import com.opensymphony.xwork2.ActionSupport;
  * @describe 
  */
 @Transactional
-@Service
 
+@Service("service")
 public class ProductService{
 
 
@@ -36,6 +34,15 @@ public class ProductService{
 	//按条件查询
 	public List<Product> check(String sql){
 		return productDao.check(sql);
+		
+	}
+	public void delBookById(int id) {
+		productDao.delBook(id);
+	}
+	
+	public void delAllBooks(String[] ids) {
+		
+		productDao.delAll(ids);
 		
 	}
 	

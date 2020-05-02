@@ -9,7 +9,7 @@
 <body>
 
 	<%
-		response.sendRedirect(request.getContextPath()+"/admin/AdminAction");
+		response.sendRedirect(request.getContextPath()+"/admin/AdminAction_execute");
 	%>
 </body>
 </html>

@@ -102,7 +102,7 @@ public abstract class BaseHibernateDAO<T> {
 	protected int del(Serializable id) {
 		Transaction tx = null;
 		int result = 0;
-		Session session = getSession();
+		Session session = hibernateTemplate.getSessionFactory().openSession();
 		try {
 			tx = session.beginTransaction();
 			Query q = getSession().createQuery(
@@ -115,7 +115,7 @@ public abstract class BaseHibernateDAO<T> {
 			}
 			e.printStackTrace();
 		} finally {
-			closeSession();
+		
 		}
 		
 		return result;
