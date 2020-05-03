@@ -50,9 +50,15 @@ public class ProductService{
 	public Product addBooks(Product p){
 		
 		
-		return productDao.add(p);
-		
-		
+		return productDao.add(p);	
 	}
-
+	public Product updateBooks(Product p){
+		
+		return productDao.update(p);
+	}
+	
+	public Product getProductById(int id){
+		
+		return productDao.getProductById(id);
+	}
 }

@@ -23,7 +23,9 @@ public interface ProductDao {
 		
 	public Product add(Product p);
 	
-	public void update(Product p);
+	public Product update(Product p);
+	
+	public Product getProductById(int id);
 
 	//按条件查询
 	public List<Product> check(String sql); 

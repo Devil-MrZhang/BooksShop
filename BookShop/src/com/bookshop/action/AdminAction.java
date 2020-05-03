@@ -33,6 +33,7 @@ public class AdminAction extends ActionSupport {
 	private List<Product> books;
 	private HttpServletRequest request;
 	private HttpSession session;
+	private int id;
 	private Product p;
 	public AdminAction() {
 		request=ServletActionContext.getRequest();
@@ -49,6 +50,7 @@ public class AdminAction extends ActionSupport {
 	private int minprice;
 	//最大价
 	private int maxprice=1000;
+	private Product pr;
 	
 	
 
@@ -115,6 +117,30 @@ public class AdminAction extends ActionSupport {
 		service.addBooks(p);
 		return "addBooks";
 	}
+	/**
+	 * 跳转到更新页面
+	 * @return
+	 */
+	public String toUpdate(){
+		pr = service.getProductById(id);
+		System.out.println(pr.getImg_url());
+		return "toUpdate";
+	}
+	/**
+	 * 编辑后提交
+	 * @return
+	 */
+	public String update(){
+		Product pro = service.getProductById(id);
+		pro.setName(p.getName());
+		pro.setPrice(p.getPrice());
+		pro.setImg_url(p.getImg_url());
+		pro.setPnum(p.getPnum());
+		pro.setCategory(p.getCategory());
+		pro.setDescription(p.getDescription());
+		service.updateBooks(pro);
+		return "input";
+	}
 	
 	public List<Product> getBooks() {
 		return books;
@@ -164,6 +190,18 @@ public class AdminAction extends ActionSupport {
 	}
 	public void setP(Product p) {
 		this.p = p;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Product getPr() {
+		return pr;
+	}
+	public void setPr(Product pr) {
+		this.pr = pr;
 	}
 
 	

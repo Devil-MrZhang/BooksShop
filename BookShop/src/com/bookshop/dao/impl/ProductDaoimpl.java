@@ -31,9 +31,9 @@ public class ProductDaoimpl extends BaseHibernateDAO<Product> implements Product
 	}
 
 	@Override
-	public void update(Product p) {
-		// TODO Auto-generated method stub
-		saveOrUpdate(p);
+	public Product update(Product p) {
+		
+		return saveOrUpdate(p);
 	}
 	public List<Product> check(String sql) {
 		// TODO Auto-generated method stub
@@ -53,6 +53,12 @@ public class ProductDaoimpl extends BaseHibernateDAO<Product> implements Product
 			super.del(id);
 		}
 		
+	}
+
+	@Override
+	public Product getProductById(int id) {
+		// TODO Auto-generated method stub
+		return super.get(id);
 	}
 
 

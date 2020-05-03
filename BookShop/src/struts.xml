@@ -18,7 +18,9 @@
 		</action>
 		
 		<action name="addAction_*" class="com.bookshop.action.AdminAction" method="{1}">
-			<result name="addBooks">/admin/products/list.jsp</result>
+			<result name="addBooks" type="redirectAction">AdminAction_execute</result>
+			<result name="input" type="redirectAction">AdminAction_execute</result>
+			<result name="toUpdate">/admin/products/edit.jsp</result>
 		</action>
 	</package>
 	
