@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2020-05-03 14:23:16
+Date: 2020-05-03 15:13:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -58,7 +58,7 @@ CREATE TABLE `t_product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `price` varchar(10) NOT NULL,
-  `img_url` varchar(200) DEFAULT NULL,
+  `img_url` varchar(200) NOT NULL,
   `pnum` int(11) NOT NULL,
   `category` varchar(100) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE `t_product` (
 -- ----------------------------
 -- Records of t_product
 -- ----------------------------
-INSERT INTO `t_product` VALUES ('27', '泰戈尔诗集', '18', null, '976', '计算机', 'ffffff');
+INSERT INTO `t_product` VALUES ('27', '泰戈尔诗集', '18', 'images/book/book_01.gif', '976', '计算机', 'ffffff');
 INSERT INTO `t_product` VALUES ('28', '痕记', '22.80', 'images/book/book_02.gif', '977', '科学', 'fffffffff');
 INSERT INTO `t_product` VALUES ('29', '天堂之旅', '25.00', 'images/book/book_03.gif', '989', '呵呵', 'fffffffffff');
 INSERT INTO `t_product` VALUES ('30', '钱钟书集', '332.50', 'images/book/book_04.gif', '999', 'aaa', 'ffffffffffff');
