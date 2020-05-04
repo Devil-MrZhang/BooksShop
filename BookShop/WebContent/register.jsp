@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
-
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	function changeImage() {
 
-		document.getElementById("img").src = "${pageContext.request.contextPath}/imageCode?time="
+		document.getElementById("img").src = "${pageContext.request.contextPath}/product/UserAction_changeImg?time="
 				+ new Date().getTime();
 	}
 </script>
@@ -24,7 +24,7 @@
 	<%@include file="menu_search.jsp"%><%--导入导航条与搜索 --%>
 
 	<div id="divcontent">
-		<form action="#"
+		<form action="${pageContext.request.contextPath}/UserAction_reggister"
 			method="post">
 			<table width="850px" border="0" cellspacing="0">
 				<tr>
@@ -42,14 +42,14 @@
 							<tr>
 								<td style="text-align:right">会员名：</td>
 								<td>
-									<input type="text" class="textinput" name="username" />
+									<input type="text" class="textinput" name="user.username" />
 								</td>
 								<td><font color="#999999">用户名设置至少6位</font></td>
 							</tr>
 							<tr>
 								<td style="text-align:right">密码：</td>
 								<td><input type="password" class="textinput"
-									name="password" /></td>
+									name="user.password" /></td>
 								<td><font color="#999999">密码设置至少6位</font></td>
 							</tr>
 							<tr>
@@ -61,18 +61,18 @@
 							<tr>
 								<td style="text-align:right">性别：</td>
 								<td colspan="2">&nbsp;&nbsp;<input type="radio"
-									name="gender" value="男" checked="checked" /> 男
+									name="user.gender" value="男" checked="checked" /> 男
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"
-									name="gender" value="女" /> 女</td>
+									name="user.gender" value="女" /> 女</td>
 							</tr>
 							<tr>
 								<td style="text-align:right">联系电话：</td>
 								<td colspan="2"><input type="text" class="textinput"
-									style="width:350px" name="telephone" /></td>
+									style="width:350px" name="user.telephone" /></td>
 							</tr>
 							<tr>
 								<td style="text-align:right">个人介绍：</td>
-								<td colspan="2"><textarea class="textarea" name="introduce"></textarea>
+								<td colspan="2"><textarea class="textarea" name="user.introduce"></textarea>
 								</td>
 							</tr>
 
@@ -86,12 +86,14 @@
 								<td style="text-align:right; width:20%">输入校验码：</td>
 								<td style="width:50%"><input type="text" class="textinput" name="ckcode"/>
 								</td>
-								<td></td>
+								<td><s:property value='<s:fielderror fieldName="ckcode_msg"></s:fielderror>' />
+									
+								</td>
 							</tr>
 							<tr>
 								<td style="text-align:right;width:20%;">&nbsp;</td>
 								<td colspan="2" style="width:50%"><img
-									src="${pageContext.request.contextPath}/imageCode" width="180"
+									src="${pageContext.request.contextPath}/product/UserAction_changeImg" width="180"
 									height="30" class="textinput" style="height:30px;" id="img" />&nbsp;&nbsp;
 									<a href="javascript:void(0);" onclick="changeImage()">看不清换一张</a>
 								</td>

@@ -24,4 +24,19 @@
 		</action>
 	</package>
 	
+	
+	<!-- 前台内容 -->
+	
+	<package name="product" namespace="/product" extends="struts-default">
+	
+		<action name="UserAction_*" class="com.bookshop.action.UserAction" method="{1}">
+			<result name="register">/registersuccess.jsp</result>
+			<result name="input">/register.jsp</result>
+			<result name="changeImg">/register.jsp</result>
+			
+		</action>
+		
+		
+	</package>
+	
 </struts>

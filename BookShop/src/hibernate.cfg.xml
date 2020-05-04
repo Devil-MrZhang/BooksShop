@@ -31,6 +31,8 @@
  		
 
  		    <mapping resource="com/bookshop/model/Product.hbm.xml"/>
+ 		    <mapping resource="com/bookshop/model/User.hbm.xml"/>
+ 		    <mapping resource="com/bookshop/model/Order.hbm.xml"/>
 
       </session-factory>
  	
