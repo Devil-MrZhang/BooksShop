@@ -69,7 +69,7 @@
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品图片：</td>
 				<td class="ta_01" bgColor="#ffffff" colSpan="3"><input
-					type="file" name="upload" size="30" name="p.img_url" src="${pr.img_url}" value="${pr.img_url}" /></td>
+					type="file"  size="30" name="p.img_url"  value="${pr.img_url}" /></td>
 			</tr>
 			<TR>
 				<TD class="ta_01" align="center" bgColor="#f5fafe">商品描述：</TD>
