@@ -55,51 +55,50 @@
 		div.style.background="white";
 	}
 //-->
+
 </script>
 
 <div id="divmenu">
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=wx">文学</a>
+		href="admin/findAction_findAllcategory.action?category2=aaa">文学</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=sh">生活</a>
+		href="admin/findAction_findAllcategory.action?category2=aaa">生活</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=jsj">计算机</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">计算机</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=wy">外语</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">外语</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=jy">经管</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">经管</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=lz">励志</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">励志</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=sk">社科</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">社科</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=xs">学术</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">学术</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=sr">少儿</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">少儿</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=ys">艺术</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">艺术</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=yb">原版</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">原版</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=kj">科技</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">科技</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=ks">考试</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">考试</a>
 	<a
-		href="${pageContext.request.contextPath}/pageServlet?category=shbk">生活百科</a>
-	<a href="${pageContext.request.contextPath}/pageServlet"
-		style="color:#FFFF00">全部商品目录</a>
+		href="admin/findAction_findAllcategory.action?category2=计算机">生活百科</a>
+	<a href="admin/findAction_findAllweb.action" style="color:#FFFF00">全部商品目录</a>
+		
 </div>
 <div id="divsearch">
-	<form action="#"
-		method="post">
+	<form action="admin/findAction_findPname.action" method="post">
+		
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
 				<td style="text-align:right; padding-right:220px">
-				Search <input
-					type="text" name="name" class="inputtable" onkeyup="searchName();"
-					id="name" /> 
-					<input type="image" src="images/serchbutton.gif"
-					border="0" style="margin-bottom:-4px">
+				Search <input type="text" name="name" class="inputtable" onkeyup="searchName();"id="name" /> 
+					<input type="image" src="${pageContext.request.contextPath}/images/serchbutton.gif" border="0" style="margin-bottom:-4px">
+										
 				</td>
 			</tr>
 		</table>

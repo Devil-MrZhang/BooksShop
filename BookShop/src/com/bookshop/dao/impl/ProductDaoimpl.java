@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bookshop.dao.ProductDao;
 import com.bookshop.model.Product;
+import com.bookshop.utils.PageResults;
 
 /**
  * @author 张家宝
@@ -60,6 +61,37 @@ public class ProductDaoimpl extends BaseHibernateDAO<Product> implements Product
 		// TODO Auto-generated method stub
 		return super.get(id);
 	}
+
+
+	/**
+	 * 
+	 *@date 2020年5月5日
+	  @describe 搜索框
+	 */
+	@Override
+	public Product findProName(String name) {
+		// TODO Auto-generated method stub
+		return super.getByHQL("from Product p where p.name=?", name);
+	}
+	/**
+	 * 全部商品分页 	 
+	 */
+	@Override
+	public PageResults<Product> findPageByFetchedHql(String hql, int pageNo, int pageSize) {
+		// TODO Auto-generated method stub
+		return super.findPageByFetchedHql(hql, null,pageNo, pageSize);
+	}
+
+	
+	/**
+	 * 分类商品分页 	 
+	 */
+	@Override
+	public PageResults<Product> findPageByCategory(String hql, int pageNo, int pageSize,String category) {
+		// TODO Auto-generated method stub
+		return super.findPageByFetchedHql(hql, null, pageNo, pageSize, category);
+	}
+
 
 
 

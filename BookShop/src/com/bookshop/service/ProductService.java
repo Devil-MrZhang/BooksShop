@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bookshop.dao.ProductDao;
 import com.bookshop.model.Product;
+import com.bookshop.utils.PageResults;
 
 /**
  * @author 张家宝
@@ -60,5 +61,31 @@ public class ProductService{
 	public Product getProductById(int id){
 		
 		return productDao.getProductById(id);
+	}
+	/**
+	 * 
+	 *@date 2020年5月5日
+	  @describe 搜索框
+	 */
+	public Product findProName(String name){
+		
+			return productDao.findProName(name);
+		}
+	/**
+     * 全部商品分页
+     *@author 汪龙炎
+     * @param pageNo当前页码
+     * @return
+     * @date  2020年5月6日  
+     * @parameter
+     */
+	public PageResults<Product> findPageUser(int pageNo){
+		return productDao.findPageByFetchedHql("from Product", pageNo, 5);
+	}
+	/**
+	 * 分类商品分页
+	 */
+	public PageResults<Product> findPageProduct(int pageNo,String category){
+		return productDao.findPageByCategory("from Product p where p.category = ?", pageNo, 5,category); 
 	}
 }

@@ -16,13 +16,14 @@ import org.springframework.stereotype.Controller;
 
 import com.bookshop.model.Product;
 import com.bookshop.service.ProductService;
+import com.bookshop.utils.PageResults;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
 
 /**
- * @author 张家宝
- * @data 2020年4月29日 下午5:57:28
+ * @author 寮犲瀹�
+ * @data 2020骞�4鏈�29鏃� 涓嬪崍5:57:28
  * @describe 
  */
 @Controller
@@ -34,21 +35,26 @@ public class AdminAction extends ActionSupport {
 	private HttpServletRequest request;
 	private HttpSession session;
 	private int id;
+	private String name;
+	private  Product pp;
+	private int pageNo;
+	private String category2;
+	private PageResults pageResults;
 	private Product p;
 	public AdminAction() {
 		request=ServletActionContext.getRequest();
 		session=request.getSession();
 	}
 	
-	//商品id
+	//鍟嗗搧id
 	private int cid;
-	//商品类别
+	//鍟嗗搧绫诲埆
 	private String category;
-	//商品名称
+	//鍟嗗搧鍚嶇О
 	private String cname;
-	//最小价
+	//鏈�灏忎环
 	private int minprice;
-	//最大价
+	//鏈�澶т环
 	private int maxprice=1000;
 	private Product pr;
 	
@@ -64,7 +70,7 @@ public class AdminAction extends ActionSupport {
 		return "list";
 	}
 	/*
-	 * 申
+	 * 鐢�
 	 * 
 	 * */
 	public String check() {
@@ -86,8 +92,8 @@ public class AdminAction extends ActionSupport {
 
 	/**
 	 * 
-	 *@date 2020年5月1日
-	  @describe 删除书
+	 *@date 2020骞�5鏈�1鏃�
+	  @describe 鍒犻櫎涔�
 	 */
 	public String delBook() {
 		System.out.println("*****del*****"+cid);
@@ -98,8 +104,8 @@ public class AdminAction extends ActionSupport {
 	}
 	/**
 	 * 
-	 *@date 2020年5月1日
-	  @describe  删除所选中 的书
+	 *@date 2020骞�5鏈�1鏃�
+	  @describe  鍒犻櫎鎵�閫変腑 鐨勪功
 	 */
 	public String delAll() {
 		String[] ids = request.getParameterValues("ids");
@@ -109,7 +115,7 @@ public class AdminAction extends ActionSupport {
 	}
 	
 	/**
-	 * 添加书
+	 * 娣诲姞涔�
 	 * @return
 	 */
 	public String addBooks(){
@@ -118,7 +124,7 @@ public class AdminAction extends ActionSupport {
 		return "addBooks";
 	}
 	/**
-	 * 跳转到更新页面
+	 * 璺宠浆鍒版洿鏂伴〉闈�
 	 * @return
 	 */
 	public String toUpdate(){
@@ -127,7 +133,7 @@ public class AdminAction extends ActionSupport {
 		return "toUpdate";
 	}
 	/**
-	 * 编辑后提交
+	 * 缂栬緫鍚庢彁浜�
 	 * @return
 	 */
 	public String update(){
@@ -141,7 +147,73 @@ public class AdminAction extends ActionSupport {
 		service.updateBooks(pro);
 		return "input";
 	}
+	/**
+	 * 汪
+	 *@date 2020年5月5日
+	  @describe 搜索框
+	 */
+	public String findPname() {
+	 String qwe="findPname";
+			    
+		if(service.findProName(name)==null) {
+			qwe= "findPnametuo";
+		}else {
+			pp=service.findProName(name);
+		}		
+		return qwe;
+	}
+		 
+	/**
+	 * 汪
+	 *@date 2020年5月5日
+	  @describe 全部商品
+	 */
+	public String findAllweb(){
+		pageResults=service.findPageUser(pageNo);	
+		books=pageResults.getResults();
+		return "findAllweb";
+	}
+	/**
+	 * 汪
+	 *@date 2020年5月5日
+	  @describe 分类商品
+	 */
+	public String findAllcategory(){
+		pageResults=service.findPageProduct(pageNo, category2);	
+		books=pageResults.getResults();
+		return "findAllcategory";
+	}
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Product getPp() {
+		return pp;
+	}
+	public void setPp(Product pp) {
+		this.pp = pp;
+	}
+	public int getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+	public String getCategory2() {
+		return category2;
+	}
+	public void setCategory2(String category2) {
+		this.category2 = category2;
+	}
+	public PageResults getPageResults() {
+		return pageResults;
+	}
+	public void setPageResults(PageResults pageResults) {
+		this.pageResults = pageResults;
+	}
 	public List<Product> getBooks() {
 		return books;
 	}

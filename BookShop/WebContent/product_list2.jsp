@@ -62,25 +62,26 @@
 										
 									</tr>
 								</table>
-
+                            
+                            
                             </s:iterator>
 
 
 								<div class="pagination">
 									<ul>
 
-
+                                     
 										<li class="disablepage"><a
-											href="admin/findAction_findAllweb.action?pageNo=${pageResults.currentPage-1}">&lt;&lt;上一页</a>
+											href="admin/findAction_findAllcategory.action?pageNo=${pageResults.currentPage-1}&category2=${book.category}">&lt;&lt;上一页</a>
 										</li>
 
 
 										<li>第  ${pageResults.currentPage}页/共${pageResults.pageCount}页</li>
 
 										<li class="nextPage"><a
-											href="admin/findAction_findAllweb.action?pageNo=${pageResults.pageNo}">&lt;&lt;下一页</a>
+											href="admin/findAction_findAllcategory.action?pageNo=${pageResults.pageNo}&category2=${book.category}">&lt;&lt;下一页</a>
 										</li>
-
+									
 
 									</ul>
 								</div></td>

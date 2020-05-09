@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 											<div class="divbookcover">
 												<p>
-													<img src="#" width="213" height="269" border="0" />
+													<img src="${pp.img_url}" width="213" height="269" border="0" />
 												</p>
 											</div>
 
@@ -55,12 +55,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											src="images/miniicon3.gif" width="16" height="13" /><font
 											class="bookname">&nbsp;&nbsp; </font>
 
-											<hr />售价：<font color="#FF0000">￥:元</font>
-											<hr /> 类别：
+											<hr />售价：<font color="#FF0000">￥:${pp.price}元</font>
+											<hr /> 类别：${pp.category}
 
 											<hr />
 											<p>
-												<b>内容简介：</b>
+												<b>内容简介：${pp.description}</b>
 											</p></td>
 									</tr>
 								</table>
