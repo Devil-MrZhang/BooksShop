@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>bookStore首页</title>
-<%--导入css --%>
+<%--导入css 阿斯顿萨达萨达萨达--%>
 <link rel="stylesheet" href="css/main.css" type="text/css" />
 </head>
 
