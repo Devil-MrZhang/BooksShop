@@ -87,7 +87,7 @@ public class AdminAction extends ActionSupport {
 		String sql = "from Product  where " + add;
 		books = service.check(sql);
 		System.out.println(books);
-		return "check";
+		return "list";
 	}
 
 	/**
