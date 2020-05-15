@@ -93,6 +93,7 @@ public class UserAction extends ActionSupport {
 	public void validateRegister() {
 		String ckcode = request.getParameter("ckcode");
 		String checkcode_session = (String) request.getSession().getAttribute("checkcode_session");
+		System.out.println(checkcode_session+"------"+ckcode);
 		if(!checkcode_session.equals(ckcode)){			
 			this.addFieldError("ckcode_msg", "验证码错误");
 			

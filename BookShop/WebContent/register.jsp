@@ -24,7 +24,7 @@
 	<%@include file="menu_search.jsp"%><%--导入导航条与搜索 --%>
 
 	<div id="divcontent">
-		<form action="${pageContext.request.contextPath}/UserAction_reggister"
+		<form action="${pageContext.request.contextPath}/product/UserAction_register"
 			method="post">
 			<table width="850px" border="0" cellspacing="0">
 				<tr>
@@ -36,7 +36,7 @@
 								<td style="text-align:right; width:20%">会员邮箱：</td>
 								<td style="width:40%">
 								<input type="text" class="textinput"
-									name="email" /></td>
+									name="user.email" /></td>
 								<td><font color="#999999">请输入有效的邮箱地址</font></td>
 							</tr>
 							<tr>
@@ -95,7 +95,7 @@
 								<td colspan="2" style="width:50%"><img
 									src="${pageContext.request.contextPath}/product/UserAction_changeImg" width="180"
 									height="30" class="textinput" style="height:30px;" id="img" />&nbsp;&nbsp;
-									<a href="javascript:void(0);" onclick="changeImage()">看不清换一张</a>
+									<a  onclick="changeImage()">看不清换一张</a>
 								</td>
 							</tr>
 						</table>

@@ -15,7 +15,7 @@ function changeSecond() {
 
 	if (svalue == 0) {
 		window.clearInterval(interval);
-		location.href = "index.jsp";
+		location.href = "${pageContext.request.contextPath}/index.jsp";
 		return;
 	}
 

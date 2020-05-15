@@ -15,7 +15,7 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
-	private String telphone;
+	private String telephone;
 	private String introduce;
 	private int role;
 	private String gender;
@@ -44,11 +44,12 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getTelphone() {
-		return telphone;
+
+	public String getTelephone() {
+		return telephone;
 	}
-	public void setTelphone(String telphone) {
-		this.telphone = telphone;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 	public String getIntroduce() {
 		return introduce;

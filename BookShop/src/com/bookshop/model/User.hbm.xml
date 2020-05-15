@@ -12,7 +12,7 @@
     		<property name="password" column="password"></property>
     		<property name="email" column="email"></property>
     		<property name="introduce" column="introduce"></property>
-    		<property name="telphone" column="telphone"></property>
+    		<property name="telephone" column="telephone"></property>
     		<property name="role" column="role"></property>
     		<property name="gender" column="gender"></property>
     		<property name="registerTime" column="registerTime"></property>
