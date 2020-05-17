@@ -60,38 +60,38 @@
 
 <div id="divmenu">
 	<a
-		href="admin/findAction_findAllcategory.action?category2=aaa">文学</a>
+		href="product/findAction_findAllcategory.action?category2=aaa">文学</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=aaa">生活</a>
+		href="product/findAction_findAllcategory.action?category2=aaa">生活</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">计算机</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">计算机</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">外语</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">外语</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">经管</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">经管</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">励志</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">励志</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">社科</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">社科</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">学术</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">学术</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">少儿</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">少儿</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">艺术</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">艺术</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">原版</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">原版</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">科技</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">科技</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">考试</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">考试</a>
 	<a
-		href="admin/findAction_findAllcategory.action?category2=计算机">生活百科</a>
-	<a href="admin/findAction_findAllweb.action" style="color:#FFFF00">全部商品目录</a>
+		href="product/findAction_findAllcategory.action?category2=计算机">生活百科</a>
+	<a href="product/findAction_findAllweb.action" style="color:#FFFF00">全部商品目录</a>
 		
 </div>
 <div id="divsearch">
-	<form action="admin/findAction_findPname.action" method="post">
+	<form action="product/findAction_findPname.action" method="post">
 		
 		<table width="100%" border="0" cellspacing="0">
 			<tr>

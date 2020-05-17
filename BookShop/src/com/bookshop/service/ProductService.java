@@ -86,6 +86,6 @@ public class ProductService{
 	 * 分类商品分页
 	 */
 	public PageResults<Product> findPageProduct(int pageNo,String category){
-		return productDao.findPageByCategory("from Product p where p.category = ?", pageNo, 5,category); 
+		return productDao.findPageByCategory("from Product p where p.category = ?", pageNo, 4,category); 
 	}
 }

@@ -19,13 +19,7 @@
 			<result name="input" type="redirectAction">execute</result>
 			<result name="toUpdate">/admin/products/edit.jsp</result>
 		</action>
-		<action name="findAction_*" class="com.bookshop.action.AdminAction" method="{1}">
-			<result name="findPname">/product_info.jsp</result>
-			<result name="findPnametuo" type="redirect">/index.jsp</result>
-			<result name="findAllweb" >//product_list.jsp</result>
-			<result name="findAllcategory" >//product_list2.jsp</result>
 		
-		</action>
 	</package>
 	
 	
@@ -40,6 +34,12 @@
 			
 		</action>
 		
+		<action name="findAction_*" class="com.bookshop.action.AdminAction" method="{1}">
+			<result name="findPname">/product_info.jsp</result>
+			<result name="findPnametuo" type="redirect">/index.jsp</result>
+			<result name="findAllweb" >/product_list.jsp</result>
+			<result name="findAllcategory" >/product_list2.jsp</result>		
+		</action>
 		
 	</package>
 	
