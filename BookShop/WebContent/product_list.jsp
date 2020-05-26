@@ -40,12 +40,12 @@
 										src="#"
 										width="100%" height="38" />
 								</div>
-                     <s:iterator value="books" var="book">
+                     
 								<table cellspacing="0" class="booklist">
 									<tr>
-										
+									<s:iterator value="books" var="book">	
 										<td>
-
+										
 												<div class="divbookpic">
 													<p>
 														<a href="#"><img
@@ -58,12 +58,13 @@
 													<a
 														href="${pageContext.request.contextPath }/product_info.jsp">书名:${book.name}<br />售价:${book.price}</a>
 												</div>
+											
 											</td>
-										
+										</s:iterator>
 									</tr>
 								</table>
 
-                            </s:iterator>
+                           
 
 
 								<div class="pagination">
