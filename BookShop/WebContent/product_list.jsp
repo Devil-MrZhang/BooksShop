@@ -56,7 +56,7 @@
 
 												<div class="divlisttitle">
 													<a
-														href="#">书名:${book.name}<br />售价:${book.price}</a>
+														href="${pageContext.request.contextPath }/product_info.jsp">书名:${book.name}<br />售价:${book.price}</a>
 												</div>
 											</td>
 										
