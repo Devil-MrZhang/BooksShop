@@ -26,6 +26,12 @@ public class UserDaoimpl extends BaseHibernateDAO<User> implements  UserDao{
 		
 	}
 
+	@Override
+	public User cha(int i) {
+		// TODO Auto-generated method stub
+		return get(i);
+	}
+
 	
 
 }

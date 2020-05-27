@@ -18,5 +18,5 @@ public interface UserDao {
 	 */
 	public void addUser(User user);
 		
-	
+	public User cha(int i);
 }

@@ -36,7 +36,7 @@ import com.sun.net.httpserver.Authenticator.Success;
 /**
  * @author 张家宝
  * @data 2020年5月4日 下午5:24:33
- * @describe 
+ * @describe
  */
 @Controller
 @Scope("prototype")
@@ -48,16 +48,24 @@ public class UserAction extends ActionSupport {
 	@Resource
 	private UserService userService;
 	
-	private  List<String> words = new ArrayList<String>();
+	public int id;
+	public String telephone;
+	public String pwd;
+	public String gender;
+	
+	
+	
+	
+	private List<String> words = new ArrayList<String>();
+
 	public UserAction() {
-		
+
 		String path = ServletActionContext.getServletContext().getRealPath("/WEB-INF/new_words.txt");
-		request=ServletActionContext.getRequest();
-		response=ServletActionContext.getResponse();
-		session=request.getSession();
+		request = ServletActionContext.getRequest();
+		response = ServletActionContext.getResponse();
+		session = request.getSession();
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream(path), "UTF-8"));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"));
 			String line;
 			while ((line = reader.readLine()) != null) {
 				words.add(line);
@@ -66,45 +74,54 @@ public class UserAction extends ActionSupport {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
+	//修改账户信息
+	public String modiry() {
+		System.out.println("++++++++++++++++++++++++++++modiry");
+		System.out.println("id"+id+"密码："+pwd+"手机号"+telephone+"性别"+gender);
+		
+		user=userService.cha(id);
+		user.setPassword(pwd);
+		user.setTelephone(telephone);
+		user.setGender(gender);
+		user.setId(id);
+		userService.register(user);
 
-
+		return "modiry";
+	}
 	
-
 	public String register() {
 		userService.register(user);
-		
+
 		return "register";
 	}
-	
+
 	public String changeImg() {
-		ChangeImgcode imgcode=new ChangeImgcode();
+		ChangeImgcode imgcode = new ChangeImgcode();
 		try {
 			imgcode.changeImg(session, response, words);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return "changeImg";
 	}
-	
-	
+
 	public void validateRegister() {
 		String ckcode = request.getParameter("ckcode");
 		String checkcode_session = (String) request.getSession().getAttribute("checkcode_session");
-		System.out.println(checkcode_session+"------"+ckcode);
-		if(!checkcode_session.equals(ckcode)){			
+		System.out.println(checkcode_session + "------" + ckcode);
+		if (!checkcode_session.equals(ckcode)) {
 			this.addFieldError("ckcode_msg", "验证码错误");
-			
+
 		}
-		
+
 	}
-	
+
 	public User getUser() {
 		return user;
 	}
-
 
 	public void setUser(User user) {
 		this.user = user;

@@ -46,7 +46,7 @@
 					</div>
 					<table cellspacing="0" class="infocontent">
 						<tr>
-							<td style="padding:20px"><p>
+							<td style="padding:20px"><p>s
 									<img src="ad/myad.jpg" width="631" height="436" />
 								</p>
 							</td>

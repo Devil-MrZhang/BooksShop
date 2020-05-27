@@ -54,8 +54,8 @@
 					<table cellspacing="0" class="infocontent">
 						<tr>
 							<td>
-								<form action="#" method="post">
-									<input type="hidden" name="id" value=""/>
+								<form action="product/UserAction_modiry" method="post">
+									<input type="hidden" name="id" value="14"/>
 									<table width="100%" border="0" cellspacing="2" class="upline">
 										<tr>
 											<td style="text-align:right; width:20%">会员邮箱：</td>
@@ -66,18 +66,18 @@
 										</tr>
 										<tr>
 											<td style="text-align:right">会员名：</td>
-											<td style="padding-left:20px"></td>
+											<td  style="padding-left:20px"></td>
 											<td>&nbsp;</td>
 										</tr>
 										<tr>
 											<td style="text-align:right">修改密码：</td>
-											<td><input type="password" name="password"
+											<td><input type="password" name="pwd"
 												class="textinput" /></td>
 											<td><font color="#999999">密码设置至少6位，请区分大小写</font></td>
 										</tr>
 										<tr>
 											<td style="text-align:right">重复密码：</td>
-											<td><input type="password" class="textinput" /></td>
+											<td><input type="password" name="pwdd" class="textinput" /></td>
 											<td>&nbsp;</td>
 										</tr>
 										<tr>

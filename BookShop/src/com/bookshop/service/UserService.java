@@ -35,4 +35,9 @@ public class UserService{
 	public void register(User user) {
 		userDao.addUser(user);
 	}
+	
+	public User cha(int id){
+		return userDao.cha(id);
+	}
+	
 }
