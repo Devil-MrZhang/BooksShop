@@ -31,7 +31,9 @@
 			<result name="register">/registersuccess.jsp</result>
 			<result name="input">/register.jsp</result>
 			<result name="changeImg">/register.jsp</result>
+			<result type="redirect" name="error" >/modifyuserinfo.jsp</result>
 			<result type="redirect" name="modiry">/myAccount.jsp</result>
+			
 		</action>
 		
 		<action name="findAction_*" class="com.bookshop.action.AdminAction" method="{1}">

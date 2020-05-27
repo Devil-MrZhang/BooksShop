@@ -78,6 +78,7 @@
 										<tr>
 											<td style="text-align:right">重复密码：</td>
 											<td><input type="password" name="pwdd" class="textinput" /></td>
+											<td><a style="color: red;font-size: 18">${mm }</a></td>
 											<td>&nbsp;</td>
 										</tr>
 										<tr>

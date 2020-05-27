@@ -51,6 +51,7 @@ public class UserAction extends ActionSupport {
 	public int id;
 	public String telephone;
 	public String pwd;
+	public String pwdd;
 	public String gender;
 	
 	
@@ -80,15 +81,21 @@ public class UserAction extends ActionSupport {
 	public String modiry() {
 		System.out.println("++++++++++++++++++++++++++++modiry");
 		System.out.println("id"+id+"密码："+pwd+"手机号"+telephone+"性别"+gender);
-		
-		user=userService.cha(id);
-		user.setPassword(pwd);
-		user.setTelephone(telephone);
-		user.setGender(gender);
-		user.setId(id);
-		userService.register(user);
+		if(pwd.equals(pwdd)){
+			user=userService.cha(id);
+			user.setPassword(pwd);
+			user.setTelephone(telephone);
+			user.setGender(gender);
+			user.setId(id);
+			userService.register(user);
 
-		return "modiry";
+			return "modiry";
+		}else{
+			session.setAttribute("mm", "两次输入的密码不一样");
+			return "error";
+		}
+		
+		
 	}
 	
 	public String register() {
