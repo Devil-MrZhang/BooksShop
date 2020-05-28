@@ -52,7 +52,7 @@ public class UserAction extends ActionSupport {
 	public String telephone;
 	public String pwd;
 	public String pwdd;
-	public String gender;
+	public String gender=null;
 	
 	
 	
