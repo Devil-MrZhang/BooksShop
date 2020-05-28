@@ -53,7 +53,7 @@ public class UserAction extends ActionSupport {
 	public String telephone;
 	public String pwd;
 	public String pwdd;
-	public String gender=null;
+	public String gender="男";
 	
 	
 	
@@ -88,8 +88,11 @@ public class UserAction extends ActionSupport {
 			user.setTelephone(telephone);
 			user.setGender(gender);
 			user.setId(id);
+
 			userService.register(user);
-			
+
+			userService.modiry(user);
+
 			return "modiry";
 		}else{
 			session.setAttribute("mm", "两次输入的密码不一样");

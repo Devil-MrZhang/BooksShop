@@ -31,6 +31,7 @@ public class UserDaoimpl extends BaseHibernateDAO<User> implements  UserDao{
 		// TODO Auto-generated method stub
 		return get(i);
 	}
+
 	
 	
 	/*
@@ -41,6 +42,14 @@ public class UserDaoimpl extends BaseHibernateDAO<User> implements  UserDao{
 		
 		return super.getByHQL(hql, username,password);
 	}
+
+
+	@Override
+	public void modiry(User user) {
+		// TODO Auto-generated method stub
+		super.saveOrUpdate(user);
+	}
+
 	
 
 }

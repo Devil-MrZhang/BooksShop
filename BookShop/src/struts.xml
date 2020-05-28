@@ -9,16 +9,13 @@
 	
 		<action name="AdminAction_*" class="com.bookshop.action.AdminAction" method="{1}">
 			<result name="list">/admin/products/list.jsp</result>
-			<result type="redirectAction" name="del">execute</result>
-			<result type="redirectAction" name="delAll">execute</result>
-		</action>
-		
-		
-		<action name="addAction_*" class="com.bookshop.action.AdminAction" method="{1}">
-			<result name="addBooks" type="redirectAction">execute</result>
-			<result name="input" type="redirectAction">execute</result>
+			<result type="redirectAction" name="del">AdminAction_execute</result>
+			<result type="redirectAction" name="delAll">AdminAction_execute</result>
+			<result name="addBooks" type="redirectAction">AdminAction_execute</result>
+			<result name="input" type="redirectAction">AdminAction_execute</result>
 			<result name="toUpdate">/admin/products/edit.jsp</result>
 		</action>
+		
 		
 	</package>
 	

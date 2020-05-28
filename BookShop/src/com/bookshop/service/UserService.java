@@ -39,6 +39,7 @@ public class UserService{
 	public User cha(int id){
 		return userDao.cha(id);
 	}
+
 	
 	/*
 	 * 用户登录验证
@@ -51,4 +52,10 @@ public class UserService{
 		
 	}
 	
+
+	//修改用户信息
+	public void modiry(User user) {
+		userDao.modiry(user);
+	}
+
 }
