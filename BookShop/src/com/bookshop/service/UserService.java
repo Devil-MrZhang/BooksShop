@@ -39,5 +39,8 @@ public class UserService{
 	public User cha(int id){
 		return userDao.cha(id);
 	}
-	
+	//修改用户信息
+	public void modiry(User user) {
+		userDao.modiry(user);
+	}
 }

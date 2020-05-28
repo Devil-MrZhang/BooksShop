@@ -17,6 +17,7 @@ public interface UserDao {
 	  @describe 添加用户
 	 */
 	public void addUser(User user);
+	public void modiry(User user);
 		
 	public User cha(int i);
 }
