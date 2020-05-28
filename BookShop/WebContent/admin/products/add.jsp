@@ -15,7 +15,7 @@
 
 <body>
 	<form id="userAction_save_do" name="Form1"
-		action="${pageContext.request.contextPath }/admin/addAction_addBooks.action" method="post" enctype="multipart/form-data">
+		action="${pageContext.request.contextPath}/admin/AdminAction_addBooks.action" method="post" enctype="multipart/form-data">
 		&nbsp;
 		<table cellSpacing="1" cellPadding="5" width="100%" align="center"
 			bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">

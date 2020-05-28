@@ -171,7 +171,7 @@
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center">${book.category}</td>
 									
 									<td align="center" style="HEIGHT: 22px" width="7%"><a
-										href="admin/addAction_toUpdate.action?id=${book.id}">
+										href="admin/AdminAction_toUpdate.action?id=${book.id}">
 											<img
 											src="${pageContext.request.contextPath}/admin/images/i_edit.gif"
 											border="0" style="CURSOR: hand"> </a>

@@ -21,7 +21,7 @@
 	
 
 	<form id="userAction_save_do" name="Form1"
-		action="${pageContext.request.contextPath}/admin/addAction_update.action">
+		action="${pageContext.request.contextPath}/admin/AdminAction_update.action">
 	
 		<input type="hidden" name="id" value="${pr.id}"/>
 		<table cellSpacing="1" cellPadding="5" width="100%" align="center"

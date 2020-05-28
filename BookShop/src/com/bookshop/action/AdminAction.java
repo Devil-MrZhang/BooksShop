@@ -3,6 +3,8 @@
  */
 package com.bookshop.action;
 
+import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +12,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -121,6 +126,57 @@ public class AdminAction extends ActionSupport {
 	public String addBooks(){
 		
 		service.addBooks(p);
+		
+					//确定上传文件目录
+				    File filePath=new File("G:\\桌面\\快捷\\Images");
+				    if(!filePath.exists()){
+				    filePath.mkdirs();
+				}
+				   //确定临时文件目录
+				   File tempFilePath=new File("G:\\桌面\\快捷\\Images\\buffer\\");
+				   if(!tempFilePath.exists()){
+				   tempFilePath.mkdirs();
+				}
+				try{
+				   //创建文件工厂
+				  DiskFileItemFactory factory=new  DiskFileItemFactory();
+				  factory.setSizeThreshold(4096);//设置缓冲区大小，这里是4kb
+				  factory.setRepository(tempFilePath);//设置缓冲目录
+				  //创建上传文件操作对象
+				  ServletFileUpload upload=new  ServletFileUpload(factory);
+				  //限定上传文件大小
+				  upload.setSizeMax(4194304);//设置最大文件尺寸，这里是4MB
+				  //得到所有的请求上传文件
+				  List<FileItem>items=upload.parseRequest(request);
+				  Iterator<FileItem>i=items.iterator();
+				        while(i.hasNext()){
+					        FileItem fi=(FileItem)i.next();
+					        //检查当前项目是普通表单项目还是上传文件
+					        if(fi.isFormField()){
+						        //如果是普通表单项目，现实表单内容
+						        String fieldName=fi.getFieldName();
+						        //对应submit.html中的type="text"name="name"
+						        if(fieldName.equals("p.img_url")){
+							        //显示表单内容
+							        System.out.print("the field name is:" + fi.getString());
+						        }else{
+							        //如果是上传文件，显示文件名，
+						        	System.out.print("the upload name is:" + fi.getName());
+						        	System.out.print("<br>");
+							        String fileName=fi.getName();
+							        if(fileName!=null){
+								        File fullFile=new File(fi.getName());
+								        File savedFile=new File(filePath,fullFile.getName());
+								        fi.write(savedFile);
+								        System.out.print("上传成功");
+							        }
+						        }
+						        System.out.print("<br>");
+					        }
+				        }
+			    }catch(Exception e){
+			    	e.printStackTrace();
+			    }
 		return "addBooks";
 	}
 	/**
