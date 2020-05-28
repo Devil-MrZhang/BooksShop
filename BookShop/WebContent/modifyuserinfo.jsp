@@ -51,7 +51,7 @@ function func(){
 
 						<tr>
 							<td class="listtd"><img src="images/miniicon.gif" width="9"
-								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">用戶退出</a></td>
+								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="./product/UserAction_writeoff.action">用戶退出</a></td>
 						</tr>
 					</table>
 				</td>
@@ -69,18 +69,20 @@ function func(){
 						<tr>
 							<td>
 								<form action="product/UserAction_modiry" method="post">
-									<input type="hidden" name="id" value="14"/>
+									<input type="hidden" name="id" value="${id}"/>
 									<table width="100%" border="0" cellspacing="2" class="upline">
 										<tr>
 											<td style="text-align:right; width:20%">会员邮箱：</td>
-											<td style="width:40%; padding-left:20px"></td>
+											<td><input type="text" name="lname" disabled="disabled" value="${email} "/></p></td>
+											
 											<td>&nbsp;</td>
 
 
 										</tr>
 										<tr>
 											<td style="text-align:right">会员名：</td>
-											<td  style="padding-left:20px"></td>
+											<td><input type="text" name="lname" disabled="disabled" value="${username} "/></p></td>
+											
 											<td>&nbsp;</td>
 										</tr>
 										<tr>

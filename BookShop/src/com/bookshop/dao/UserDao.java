@@ -19,4 +19,14 @@ public interface UserDao {
 	public void addUser(User user);
 		
 	public User cha(int i);
+	
+	
+	/**
+	 * 登录验证
+	 * @param hql
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public User login(String hql,String username, String password);
 }

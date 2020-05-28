@@ -34,6 +34,13 @@
 			<result type="redirect" name="error" >/modifyuserinfo.jsp</result>
 			<result type="redirect" name="modiry">/myAccount.jsp</result>
 			
+			
+			<result name="failed">/loginfailed.jsp</result>						<!-- 用户登录失败！ -->
+			<result name="adminsucceed">/admin/login/home.jsp </result>			<!-- 管理用户登录成功！ -->
+			<result name="writeoff">/login.jsp</result>							<!-- 用户注销！ -->
+			<result name="usersucceed">/myAccount.jsp</result>					<!-- 用户登录成功！ -->
+			<!-- ./product/UserAction_writeoff -->
+			
 		</action>
 		
 		<action name="findAction_*" class="com.bookshop.action.AdminAction" method="{1}">

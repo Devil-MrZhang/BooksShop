@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
@@ -80,7 +81,7 @@ public class UserAction extends ActionSupport {
 	//修改账户信息
 	public String modiry() {
 		System.out.println("++++++++++++++++++++++++++++modiry");
-		System.out.println("id"+id+"密码："+pwd+"手机号"+telephone+"性别"+gender);
+		System.out.println("id:"+id+"密码："+pwd+"手机号"+telephone+"性别:"+gender);
 		if(pwd.equals(pwdd)){
 			user=userService.cha(id);
 			user.setPassword(pwd);
@@ -88,7 +89,7 @@ public class UserAction extends ActionSupport {
 			user.setGender(gender);
 			user.setId(id);
 			userService.register(user);
-
+			
 			return "modiry";
 		}else{
 			session.setAttribute("mm", "两次输入的密码不一样");
@@ -125,6 +126,63 @@ public class UserAction extends ActionSupport {
 		}
 
 	}
+	
+	
+	/**
+	 * 登录方法————判断用户是否存在。
+	 * 如果存在 判断用户为管理用户还是为普通用户
+	 */
+
+	public String UserRegister() {
+
+		ArrayList<Object> list1 = new ArrayList<>();
+		
+		System.out.println("==========登录方法运行！===========");
+		
+		String username = request.getParameter("username");
+		System.out.println(username);
+	
+		String password = request.getParameter("password");
+		System.out.println(password);
+		
+		
+		User user = userService.login(username, password);
+		
+			System.out.println("-------------"+user+"----------------");
+			
+			if(user==null){
+				System.out.println("用户登录失败，请重新输入");
+				return "failed";
+			}
+			else if (user.getRole()==1) {
+				session.setAttribute("username", user.getUsername());
+				session.setAttribute("email",user.getEmail());
+			
+				session.setAttribute("id",user.getId() );
+				
+				System.out.println("id:"+user.getId());
+			System.out.println("用户登录成功！");
+			return "usersucceed";
+			}else if (user.getRole()==2) {
+			System.out.println("管理用户登录成功！");
+			return "adminsucceed";	
+			}
+			else {
+				System.out.println("用户登录失败，请重新输入");
+				return "failed";
+			}
+}
+
+	/**
+	 *writeoff() 注销功能
+	 */
+
+	public String writeoff() {
+		
+		session.invalidate();
+		System.out.println("------用户注销成功！-----------");
+		return "writeoff";
+}
 
 	public User getUser() {
 		return user;
