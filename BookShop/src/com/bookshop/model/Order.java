@@ -67,6 +67,12 @@ public class Order {
 	public void setOrdertime(Date ordertime) {
 		this.ordertime = ordertime;
 	}
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", user_id=" + user_id + ", money=" + money + ", receiverName=" + receiverName
+				+ ", receiverPhone=" + receiverPhone + ", receiverAddress=" + receiverAddress + ", payState=" + payState
+				+ ", ordertime=" + ordertime + "]";
+	}
 	
 	
 	

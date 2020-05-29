@@ -3,6 +3,8 @@
  */
 package com.bookshop.model;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -19,7 +21,7 @@ public class User {
 	private String introduce;
 	private int role;
 	private String gender;
-	private Date registerTime;
+	private Timestamp registerTime;
 	public Integer getId() {
 		return id;
 	}
@@ -70,9 +72,17 @@ public class User {
 		this.gender = gender;
 	}
 	public Date getRegisterTime() {
+	
+		//取当前时间
+		Date nowdate=new Date();
+		//转换时间格式
+		SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		registerTime = Timestamp.valueOf(simpleDate.format(nowdate));
+
+	
 		return registerTime;
 	}
-	public void setRegisterTime(Date registerTime) {
+	public void setRegisterTime(Timestamp registerTime) {
 		this.registerTime = registerTime;
 	}
 	

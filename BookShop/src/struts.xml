@@ -47,6 +47,25 @@
 			<result name="findAllcategory" >/product_list2.jsp</result>		
 		</action>
 		
+		<action name="productAction_*" class="com.bookshop.action.ProductAction" method="{1}">
+			<result name="productInfo">/product_info.jsp</result>
+			<result name="addCart">/buyorcart.jsp</result>
+			<result name="cart">/cart.jsp</result>
+			<result name="checkOut">/order.jsp</result>
+		</action>
+		
+		
+		
+		
+	</package>
+	
+	<package name="order" namespace="/order" extends="struts-default">
+		<action name="orderAction_*" class="com.bookshop.action.OrderAction" method="{1}">
+					<result name="order">/order.jsp</result>
+					<result name="login">/login.jsp</result>
+					<result name="submit">/orderInfo.jsp</result>
+			</action>
+	
 	</package>
 	
 </struts>

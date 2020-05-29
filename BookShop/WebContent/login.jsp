@@ -14,7 +14,7 @@
 	<jsp:include page="menu_search.jsp" />
 
 	<div id="divcontent">
-		<form action="./product/UserAction_UserRegister.action" method="post">
+		<form action="${pageContext.request.contextPath}/product/UserAction_UserRegister" method="post">
 			<table width="900px" border="0" cellspacing="0">
 				<tr>
 					<td style="padding:30px"><div style="height:470px">

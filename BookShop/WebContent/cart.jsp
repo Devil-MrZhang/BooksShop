@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 
 <script type="text/javascript">
 	function changeNum(id,num,totalCount){
@@ -23,7 +23,7 @@
 			alert("购买数量不能大于库存数量！");
 			num=totalCount;
 		}
-		location.href="${pageContext.request.contextPath}/changeNumServlet?id="+id+"&num="+num;
+		location.href="${pageContext.request.contextPath}/product/productAction_changeNum?id="+id+"&num="+num;
 	}
 </script>
 
@@ -41,15 +41,15 @@
 			<tr>
 
 				<td><div style="text-align:right; margin:5px 10px 5px 0px">
-						<a href="index.html">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;购物车
+						<a href="${pageContext.request.contextPath}/index.html">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;购物车
 					</div>
 
 					<table cellspacing="0" class="infocontent">
 						<tr>
-							<td><img src="ad/page_ad.jpg" width="666" height="89" />
+							<td><img src="${pageContext.request.contextPath}/ad/page_ad.jpg" width="666" height="89" />
 								<table width="100%" border="0" cellspacing="0">
 									<tr>
-										<td><img src="images/buy1.gif" width="635" height="38" />
+										<td><img src="${pageContext.request.contextPath}/images/buy1.gif" width="635" height="38" />
 										</td>
 									</tr>
 									<tr>
@@ -65,45 +65,50 @@
 													<td width="10%">取消</td>
 												</tr>
 											</table> 
-											
-									<table width="100%" border="0" cellspacing="0">
+											<c:set var="sum" value="0" > </c:set>
+										
+								<c:forEach items="${sessionScope.cart}" var="entry" varStatus="vs">
+												<table width="100%" border="0" cellspacing="0">
 													<tr>
-														<td width="10%"></td>
-														<td width="30%"></td>
+														<td width="10%">${vs.count }</td>
+														<td width="30%">${entry.key.name }</td>
 
-														<td width="10%"></td>
+														<td width="10%">${entry.key.price }</td>
 														<td width="20%"><input type="button" value='-'
 															style="width:20px"
-															onclick="changeNum('','')">
+															onclick="changeNum('${entry.key.id}','${entry.value-1 }','${entry.key.pnum }')">
 
-															<input name="text" type="text" value=""
+															<input name="text" type="text" value="${entry.value }"
 															style="width:40px;text-align:center" /> <input
 															type="button" value='+' style="width:20px"
-															onclick="changeNum('','','')">
+															onclick="changeNum('${entry.key.id}','${entry.value+1 }','${entry.key.pnum }')">
 
 														</td>
-														<td width="10%"></td>
-														<td width="10%"></td>
+														<td width="10%">${entry.key.pnum }</td>
+														<td width="10%">${entry.value*entry.key.price }</td>
 
-														<td width="10%"><a href="#">X</a></td>
+														<td width="10%"><a href="${pageContext.request.contextPath}/product/productAction_changeNum?id=${entry.key.id}&num=0"
+															style="color:#FF0000; font-weight:bold">X</a></td>
 													</tr>
 												</table>
+												<c:set var="sum" value="${sum+entry.value*entry.key.price }"> </c:set>
+											</c:forEach>
 
 											<table cellspacing="1" class="carttable">
 												<tr>
 													<td style="text-align:right; padding-right:40px;"><font
-														style="color:#FF6600; font-weight:bold">合计：&nbsp;&nbsp;元</font>
+														style="color:#FF6600; font-weight:bold">合计：&nbsp;&nbsp;${sum}元</font>
 													</td>
 												</tr>
 											</table>
 											<div style="text-align:right; margin-top:10px">
 												<a
-													href="${pageContext.request.contextPath}/showProductByPage"><img
-													src="images/gwc_jx.gif" border="0" /> </a>
+													href="${pageContext.request.contextPath}/product/findAction_findAllweb.action"><img
+													src="${pageContext.request.contextPath}/images/gwc_jx.gif" border="0" /> </a>
 
 												&nbsp;&nbsp;&nbsp;&nbsp;<a
-													href="${pageContext.request.contextPath}/order.jsp"><img
-													src="images/gwc_buy.gif" border="0" /> </a>
+													href="${pageContext.request.contextPath}/order/orderAction_isLogin"><img
+													src="${pageContext.request.contextPath}/images/gwc_buy.gif" border="0" /> </a>
 											</div>
 										</td>
 									</tr>

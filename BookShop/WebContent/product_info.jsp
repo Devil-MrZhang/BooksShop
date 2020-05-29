@@ -42,25 +42,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 											<div class="divbookcover">
 												<p>
-													<img src="${pp.img_url}" width="213" height="269" border="0" />
+													<img src="${productInfo.img_url}" width="213" height="269" border="0" />
 												</p>
 											</div>
 
 											<div style="text-align:center; margin-top:25px">
-												<a href="#"> <img src="images/buybutton.gif" border="0" />
+												<a href="${pageContext.request.contextPath }/product/productAction_addCart?id=${productInfo.id}"> <img src="images/buybutton.gif" border="0" />
 												</a>
 											</div>
 										</td>
 										<td style="padding:20px 5px 5px 5px"><img
 											src="images/miniicon3.gif" width="16" height="13" /><font
 											class="bookname">&nbsp;&nbsp; </font>
-
-											<hr />售价：<font color="#FF0000">￥:${pp.price}元</font>
-											<hr /> 类别：${pp.category}
+											<hr />名称：<font>${productInfo.name}</font>
+											<hr />售价：<font color="#FF0000">￥:${productInfo.price}元</font>
+											<hr /> 类别：${productInfo.category}
 
 											<hr />
 											<p>
-												<b>内容简介：${pp.description}</b>
+												<b>内容简介：${productInfo.description}</b>
 											</p></td>
 									</tr>
 								</table>
