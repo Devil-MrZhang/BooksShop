@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
@@ -36,7 +37,7 @@ import com.sun.net.httpserver.Authenticator.Success;
 /**
  * @author 张家宝
  * @data 2020年5月4日 下午5:24:33
- * @describe 
+ * @describe
  */
 @Controller
 @Scope("prototype")
@@ -48,16 +49,25 @@ public class UserAction extends ActionSupport {
 	@Resource
 	private UserService userService;
 	
-	private  List<String> words = new ArrayList<String>();
+	public int id;
+	public String telephone;
+	public String pwd;
+	public String pwdd;
+	public String gender="男";
+	
+	
+	
+	
+	private List<String> words = new ArrayList<String>();
+
 	public UserAction() {
-		
+
 		String path = ServletActionContext.getServletContext().getRealPath("/WEB-INF/new_words.txt");
-		request=ServletActionContext.getRequest();
-		response=ServletActionContext.getResponse();
-		session=request.getSession();
+		request = ServletActionContext.getRequest();
+		response = ServletActionContext.getResponse();
+		session = request.getSession();
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					new FileInputStream(path), "UTF-8"));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"));
 			String line;
 			while ((line = reader.readLine()) != null) {
 				words.add(line);
@@ -66,45 +76,120 @@ public class UserAction extends ActionSupport {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+	}
+	//修改账户信息
+	public String modiry() {
+		System.out.println("++++++++++++++++++++++++++++modiry");
+		System.out.println("id:"+id+"密码："+pwd+"手机号"+telephone+"性别:"+gender);
+		if(pwd.equals(pwdd)){
+			user=userService.cha(id);
+			user.setPassword(pwd);
+			user.setTelephone(telephone);
+			user.setGender(gender);
+			user.setId(id);
+
+			userService.register(user);
+
+			userService.modiry(user);
+
+			return "modiry";
+		}else{
+			session.setAttribute("mm", "两次输入的密码不一样");
+			return "error";
+		}
+		
 		
 	}
-
-
 	
-
 	public String register() {
 		userService.register(user);
-		
+
 		return "register";
 	}
-	
+
 	public String changeImg() {
-		ChangeImgcode imgcode=new ChangeImgcode();
+		ChangeImgcode imgcode = new ChangeImgcode();
 		try {
 			imgcode.changeImg(session, response, words);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return "changeImg";
 	}
-	
-	
+
 	public void validateRegister() {
 		String ckcode = request.getParameter("ckcode");
 		String checkcode_session = (String) request.getSession().getAttribute("checkcode_session");
-		System.out.println(checkcode_session+"------"+ckcode);
-		if(!checkcode_session.equals(ckcode)){			
+		System.out.println(checkcode_session + "------" + ckcode);
+		if (!checkcode_session.equals(ckcode)) {
 			this.addFieldError("ckcode_msg", "验证码错误");
-			
+
 		}
-		
+
 	}
 	
+	
+	/**
+	 * 登录方法————判断用户是否存在。
+	 * 如果存在 判断用户为管理用户还是为普通用户
+	 */
+
+	public String UserRegister() {
+
+		ArrayList<Object> list1 = new ArrayList<>();
+		
+		System.out.println("==========登录方法运行！===========");
+		
+		String username = request.getParameter("username");
+		System.out.println(username);
+	
+		String password = request.getParameter("password");
+		System.out.println(password);
+		
+		
+		User user = userService.login(username, password);
+		
+			System.out.println("-------------"+user+"----------------");
+			
+			if(user==null){
+				System.out.println("用户登录失败，请重新输入");
+				return "failed";
+			}
+			else if (user.getRole()==1) {
+				session.setAttribute("username", user.getUsername());
+				session.setAttribute("email",user.getEmail());
+			
+				session.setAttribute("id",user.getId() );
+				
+				System.out.println("id:"+user.getId());
+			System.out.println("用户登录成功！");
+			return "usersucceed";
+			}else if (user.getRole()==2) {
+			System.out.println("管理用户登录成功！");
+			return "adminsucceed";	
+			}
+			else {
+				System.out.println("用户登录失败，请重新输入");
+				return "failed";
+			}
+}
+
+	/**
+	 *writeoff() 注销功能
+	 */
+
+	public String writeoff() {
+		
+		session.invalidate();
+		System.out.println("------用户注销成功！-----------");
+		return "writeoff";
+}
+
 	public User getUser() {
 		return user;
 	}
-
 
 	public void setUser(User user) {
 		this.user = user;

@@ -20,6 +20,13 @@ import com.bookshop.utils.PageResults;
 public class ProductDaoimpl extends BaseHibernateDAO<Product> implements ProductDao {
 
 	
+	
+	
+
+
+	
+	
+	
 	@Override
 	public List<Product> findAll() {
 	

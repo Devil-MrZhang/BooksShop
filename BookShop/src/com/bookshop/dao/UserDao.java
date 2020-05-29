@@ -17,6 +17,17 @@ public interface UserDao {
 	  @describe 添加用户
 	 */
 	public void addUser(User user);
+	public void modiry(User user);
 		
+	public User cha(int i);
 	
+	
+	/**
+	 * 登录验证
+	 * @param hql
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public User login(String hql,String username, String password);
 }

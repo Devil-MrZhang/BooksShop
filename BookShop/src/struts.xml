@@ -9,16 +9,13 @@
 	
 		<action name="AdminAction_*" class="com.bookshop.action.AdminAction" method="{1}">
 			<result name="list">/admin/products/list.jsp</result>
-			<result type="redirectAction" name="del">execute</result>
-			<result type="redirectAction" name="delAll">execute</result>
-		</action>
-		
-		
-		<action name="addAction_*" class="com.bookshop.action.AdminAction" method="{1}">
-			<result name="addBooks" type="redirectAction">execute</result>
-			<result name="input" type="redirectAction">execute</result>
+			<result type="redirectAction" name="del">AdminAction_execute</result>
+			<result type="redirectAction" name="delAll">AdminAction_execute</result>
+			<result name="addBooks" type="redirectAction">AdminAction_execute</result>
+			<result name="input" type="redirectAction">AdminAction_execute</result>
 			<result name="toUpdate">/admin/products/edit.jsp</result>
 		</action>
+		
 		
 	</package>
 	
@@ -31,6 +28,15 @@
 			<result name="register">/registersuccess.jsp</result>
 			<result name="input">/register.jsp</result>
 			<result name="changeImg">/register.jsp</result>
+			<result type="redirect" name="error" >/modifyuserinfo.jsp</result>
+			<result type="redirect" name="modiry">/myAccount.jsp</result>
+			
+			
+			<result name="failed">/loginfailed.jsp</result>						<!-- 用户登录失败！ -->
+			<result name="adminsucceed">/admin/login/home.jsp </result>			<!-- 管理用户登录成功！ -->
+			<result name="writeoff">/login.jsp</result>							<!-- 用户注销！ -->
+			<result name="usersucceed">/myAccount.jsp</result>					<!-- 用户登录成功！ -->
+			<!-- ./product/UserAction_writeoff -->
 			
 		</action>
 		

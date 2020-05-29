@@ -26,6 +26,30 @@ public class UserDaoimpl extends BaseHibernateDAO<User> implements  UserDao{
 		
 	}
 
+	@Override
+	public User cha(int i) {
+		// TODO Auto-generated method stub
+		return get(i);
+	}
+
+	
+	
+	/*
+	 * 登录验证
+	 * */
+	@Override
+	public User login(String hql, String username, String password) {
+		
+		return super.getByHQL(hql, username,password);
+	}
+
+
+	@Override
+	public void modiry(User user) {
+		// TODO Auto-generated method stub
+		super.saveOrUpdate(user);
+	}
+
 	
 
 }

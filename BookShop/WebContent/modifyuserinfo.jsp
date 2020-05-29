@@ -8,7 +8,21 @@
 <link rel="stylesheet" href="css/main.css" type="text/css" />
 </head>
 
+<script type="text/javascript">
+function func(){
+	           /* 失去焦点  */
+	        var vas = document.getElementById("pwdd").value;
+			var vas1 = document.getElementById("pwd").value;
+	if(vas!=vas1){
+		
+		alert("两次密码输入不一致");
+
+	}          
+	       
+	       }
+</script>
 <body class="main">
+<button onblur="oo()">0000000000000</button>
 	<jsp:include page="head.jsp" />
 
 	<jsp:include page="menu_search.jsp" />
@@ -37,7 +51,7 @@
 
 						<tr>
 							<td class="listtd"><img src="images/miniicon.gif" width="9"
-								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">用戶退出</a></td>
+								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="./product/UserAction_writeoff.action">用戶退出</a></td>
 						</tr>
 					</table>
 				</td>
@@ -54,30 +68,33 @@
 					<table cellspacing="0" class="infocontent">
 						<tr>
 							<td>
-								<form action="#" method="post">
-									<input type="hidden" name="id" value=""/>
+								<form action="product/UserAction_modiry" method="post">
+									<input type="hidden" name="id" value="${id}"/>
 									<table width="100%" border="0" cellspacing="2" class="upline">
 										<tr>
 											<td style="text-align:right; width:20%">会员邮箱：</td>
-											<td style="width:40%; padding-left:20px"></td>
+											<td><input type="text" name="lname" disabled="disabled" value="${email} "/></p></td>
+											
 											<td>&nbsp;</td>
 
 
 										</tr>
 										<tr>
 											<td style="text-align:right">会员名：</td>
-											<td style="padding-left:20px"></td>
+											<td><input type="text" name="lname" disabled="disabled" value="${username} "/></p></td>
+											
 											<td>&nbsp;</td>
 										</tr>
 										<tr>
 											<td style="text-align:right">修改密码：</td>
-											<td><input type="password" name="password"
+											<td><input id="pwd" type="password" name="pwd"
 												class="textinput" /></td>
 											<td><font color="#999999">密码设置至少6位，请区分大小写</font></td>
 										</tr>
 										<tr>
 											<td style="text-align:right">重复密码：</td>
-											<td><input type="password" class="textinput" /></td>
+											<td><input  onblur="func()" id="pwdd" type="password" name="pwdd" class="textinput" /></td>
+											<td><a style="color: red;font-size: 18">${mm }</a></td>
 											<td>&nbsp;</td>
 										</tr>
 										<tr>

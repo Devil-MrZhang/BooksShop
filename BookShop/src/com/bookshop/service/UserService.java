@@ -35,4 +35,27 @@ public class UserService{
 	public void register(User user) {
 		userDao.addUser(user);
 	}
+	
+	public User cha(int id){
+		return userDao.cha(id);
+	}
+
+	
+	/*
+	 * 用户登录验证
+	 */
+	public User login(String username,String password) {
+	//	String hql="from t_user e where e.username=? and e.password=?";
+		return userDao.login("from User e where e.username=? and e.password=?",username,password);
+		  
+		
+		
+	}
+	
+
+	//修改用户信息
+	public void modiry(User user) {
+		userDao.modiry(user);
+	}
+
 }
