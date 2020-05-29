@@ -98,7 +98,8 @@
 				<td style="text-align:right; padding-right:220px">
 				Search <input type="text" name="name" class="inputtable" onkeyup="searchName();"id="name" /> 
 					<input type="image" src="${pageContext.request.contextPath}/images/serchbutton.gif" border="0" style="margin-bottom:-4px">
-										
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="${pageContext.request.contextPath}/login.jsp"  >用户登录</a>				
 				</td>
 			</tr>
 		</table>

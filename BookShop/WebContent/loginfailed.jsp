@@ -30,8 +30,8 @@
 								src="${pageContext.request.contextPath}/images/cw.jpg" width="128" height="128" />
 							</td>
 							<td style="padding-top:30px"><font
-								style="font-weight:bold; color:#FF0000">登录失败,请重新登录！</font><br />
-								<br /> <a href="${pageContext.request.contextPath}/login.jsp"><span id="second">5</span>秒后自动为您转跳回登录界面</a>
+								style="font-weight:bold; color:#FF0000">登录失败，重新登陆</font><br />
+								<br /> <a href="${pageContext.request.contextPath}/login.jsp"><span id="second">5</span>秒后自动为您转跳回到登录页面</a>
 							</td>
 						</tr>
 					</table>
