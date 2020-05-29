@@ -29,12 +29,13 @@
 		
 		
 		//子目录添加
-		d.add(2,1,'商品查看','#','','mainFrame');
+		d.add(2,1,'商品查看','${pageContext.request.contextPath}/admin/login/welcome.jsp','','mainFrame');
 	
 		
 		document.write(d);
 		
 	</script>
+	
 </div>	</td>
   </tr>
 </table>
