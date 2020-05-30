@@ -158,12 +158,8 @@ public class UserAction extends ActionSupport {
 				return "failed";
 			}
 			else if (user.getRole()==1) {
-				session.setAttribute("username", user.getUsername());
-				session.setAttribute("email",user.getEmail());
-			
-				session.setAttribute("id",user.getId() );
+				session.setAttribute("user", user);
 				
-				System.out.println("id:"+user.getId());
 			System.out.println("用户登录成功！");
 			return "usersucceed";
 			}else if (user.getRole()==2) {
@@ -187,6 +183,17 @@ public class UserAction extends ActionSupport {
 		return "writeoff";
 }
 
+	public String isLogin() {
+		Object user = session.getAttribute("user");
+		if (user==null) {
+			return "login";
+		}else{
+			return "usersucceed";
+		}
+		
+		
+	}
+	
 	public User getUser() {
 		return user;
 	}

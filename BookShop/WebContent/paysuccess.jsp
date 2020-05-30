@@ -6,9 +6,9 @@
 <head>
 
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css" type="text/css" />
 
-<script type="text/javascript" src="js/my.js">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/my.js">
 	
 </script>
 </head>
@@ -27,7 +27,7 @@
 						border="0" cellspacing="0" style="margin-top:70px">
 						<tr>
 							<td style="width:98"><img
-								src="images/IconTexto_WebDev_009.jpg" width="128" height="128" />
+								src="${pageContext.request.contextPath }/images/IconTexto_WebDev_009.jpg" width="128" height="128" />
 							</td>
 							<td style="padding-top:30px"><font
 								style="font-weight:bold; color:#FF0000">支付成功</font><br />

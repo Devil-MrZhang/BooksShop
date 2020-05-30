@@ -29,6 +29,11 @@ public class OrderItem {
 	public void setBuynum(Integer buynum) {
 		this.buynum = buynum;
 	}
+	@Override
+	public String toString() {
+		return "OrderItem [id=" + id + ", order_id=" + order_id + ", product_id=" + product_id + ", buynum=" + buynum
+				+ "]";
+	}
 	
 	
 }

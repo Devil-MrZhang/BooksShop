@@ -3,6 +3,8 @@
  */
 package com.bookshop.model;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -62,6 +64,11 @@ public class Order {
 		this.payState = payState;
 	}
 	public Date getOrdertime() {
+		Date nowdate=new Date();
+		//转换时间格式
+		SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		ordertime = Timestamp.valueOf(simpleDate.format(nowdate));
+
 		return ordertime;
 	}
 	public void setOrdertime(Date ordertime) {

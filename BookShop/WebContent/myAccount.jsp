@@ -31,7 +31,7 @@
 
 						<tr>
 							<td class="listtd"><img src="${pageContext.request.contextPath}images/miniicon.gif" width="9"
-								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">订单查询</a>
+								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath }/order/orderAction_getOrders">订单查询</a>
 							</td>
 						</tr>
 						<tr>
@@ -42,7 +42,7 @@
 					</table></td>
 				<td><div style="text-align:right; margin:5px 10px 5px 0px">
 						<a href="index.jsp">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;<a
-							href="myAccount.jsp">&nbsp;我的帐户</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;欢迎您： ${username }
+							href="myAccount.jsp">&nbsp;我的帐户</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;欢迎您： ${user.username }
 					</div>
 					<table cellspacing="0" class="infocontent">
 						<tr>

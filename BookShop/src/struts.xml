@@ -29,6 +29,7 @@
 			<result name="register">/registersuccess.jsp</result>
 			<result name="input">/register.jsp</result>
 			<result name="changeImg">/register.jsp</result>
+			<result name="login">/login.jsp</result>
 			<result type="redirect" name="error" >/modifyuserinfo.jsp</result>
 			<result type="redirect" name="modiry">/myAccount.jsp</result>
 			
@@ -63,8 +64,11 @@
 	<package name="order" namespace="/order" extends="struts-default">
 		<action name="orderAction_*" class="com.bookshop.action.OrderAction" method="{1}">
 					<result name="order">/order.jsp</result>
-					<result name="login">/login.jsp</result>
-					<result name="submit">/orderInfo.jsp</result>
+					<result name="login">/login.jsp</result>					
+					<result name="submit">/pay.jsp</result>
+					<result name="paySuc">/paysuccess.jsp</result>
+					<result name="orderlist">/orderlist.jsp</result>
+					<result name="delOrder" type="redirectAction">orderAction_getOrders</result>
 			</action>
 	
 	</package>

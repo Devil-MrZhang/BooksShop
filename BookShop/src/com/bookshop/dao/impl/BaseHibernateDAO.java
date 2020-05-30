@@ -10,6 +10,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.ScrollableResults;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -219,7 +220,7 @@ public abstract class BaseHibernateDAO<T> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			closeSession();
+			
 		}
 		return list;
 	}
@@ -373,5 +374,23 @@ public abstract class BaseHibernateDAO<T> {
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
+	protected int getMaxId(String sql) {
+		Session session = getSession();
+		SQLQuery query = session.createSQLQuery(sql);
+		int id =  (int) query.uniqueResult();
+			 
+		
+		return id;
+	}
+	protected int getOrderId(String user_id) {
+		Session session = getSession();
+		SQLQuery query = session.createSQLQuery("SELECT MAX(id) FROM t_orders where user_id=?");
+		query.setString(0, user_id);
+		int id =  (int) query.uniqueResult();
+			 
+		
+		return id;
+	}
+	
 
 }

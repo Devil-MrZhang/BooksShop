@@ -36,8 +36,7 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 			<td width="65%" height="84" align="center" valign="top" >
 				<span class="Style1">登录成功！</span>
 				</br>
-				
-				<a href="./admin/AdminAction_execute.action">👉查看管理后台！👈</a>
+
 			</td>
 		</tr>
 		<tr><td height=2></td>

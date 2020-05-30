@@ -25,11 +25,11 @@
 		d = new dTree('d');
 		d.add(0,-1,'系统菜单树');
 		//第一个参数：当前节点，第二个参数：父级节点
-		d.add(1,0,'商品管理','${pageContext.request.contextPath}/admin/login/welcome.jsp','','mainFrame');
+		d.add(1,0,'商品管理','#','','mainFrame');
 		
 		
 		//子目录添加
-		d.add(2,1,'商品查看','${pageContext.request.contextPath}/admin/login/welcome.jsp','','mainFrame');
+		d.add(2,1,'商品查看','${pageContext.request.contextPath}/admin/AdminAction_execute.action','','mainFrame');
 	
 		
 		document.write(d);

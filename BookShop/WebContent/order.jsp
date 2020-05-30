@@ -26,7 +26,7 @@
 							href="${pageContext.request.contextPath }/cart.jsp">&nbsp;购物车</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;订单
 					</div>
 
-					<form id="orderForm" action="${pageContext.request.contextPath }/orderInfo.jsp" method="post">
+					<form id="orderForm" action="${pageContext.request.contextPath }/order/orderAction_submitOrder" method="post">
 						<table cellspacing="0" class="infocontent">
 							<tr>
 								<td><table width="100%" border="0" cellspacing="0">
@@ -69,17 +69,19 @@
 														<td style="text-align:right; padding-right:40px;"><font
 															style="color:#FF0000">合计：&nbsp;&nbsp;${count }元</font></td>
 													</tr>
-													<input type="hidden" name="money" value="${count }"/>
+													<input type="hidden" name="order.money" value="${count }"/>
 												</table>
 
 												<p>
-													收货地址：<input name="receiverAddress" type="text" value="xxx"
+													收货地址：<input name="order.receiverAddress" type="text" value="xxx"
 														style="width:350px" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"></a>
 													<br /> 收货人：&nbsp;&nbsp;&nbsp;&nbsp;<input
-														name="receiverName" type="text" value="xxx"
+														name="order.receiverName" type="text" value="xxx"
 														style="width:150px" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"></a>
-													<br /> 联系方式：<input type="text" name="receiverPhone"
+													<br /> 联系方式：<input type="text" name="order.receiverPhone"
 														value="xxx" style="width:150px" />&nbsp;&nbsp;&nbsp;&nbsp;
+														<input type="hidden" name="order.receiverName" value="${user.username }"/>
+														<input type="hidden" name="order.user_id" value="${user.id }"/>
 
 												</p>
 												<hr />
