@@ -79,7 +79,7 @@ public class AdminAction extends ActionSupport {
 	 * 
 	 * */
 	public String check() {
-		String add = "price > " + minprice + " and id > " + cid + " and price < " + maxprice;
+		String add = "price > " + minprice  + " and price < " + maxprice;
 
 		if (!category.equals("")) {
 
@@ -87,6 +87,9 @@ public class AdminAction extends ActionSupport {
 		}
 		if (!cname.equals("")) {
 			add = add + " and name like '%" + cname + "%'";
+		}
+		if (!(cid==0)) {
+			add = add + " and id = " + cid;
 		}
 
 		String sql = "from Product  where " + add;

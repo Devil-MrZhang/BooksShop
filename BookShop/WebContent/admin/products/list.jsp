@@ -114,14 +114,14 @@
 								<td align="right" bgColor="#ffffff" class="ta_01">
 									<button type="submit" id="search" name="search"
 										value="&#26597;&#35810;" class="button_view">
-										&#26597;&#35810;</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-									type="reset" name="reset" value="&#37325;&#32622;"
-									class="button_view" />
+										&#26597;&#35810;</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+									
+									 <a type="" href="AdminAction_execute">重置</a>
 								</td>
 							</tr>
 						</table>
 					</td>
-</form>
+</form><a href="aa"></a>
 	<form id="Form2" name="Form2" action="#" method="post">
 				</tr>
 				<tr>

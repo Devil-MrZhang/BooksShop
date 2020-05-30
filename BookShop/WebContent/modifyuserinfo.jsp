@@ -69,11 +69,11 @@ function func(){
 						<tr>
 							<td>
 								<form action="product/UserAction_modiry" method="post">
-									<input type="hidden" name="id" value="${id}"/>
+									<input type="hidden" name="id" value="${user.id}"/>
 									<table width="100%" border="0" cellspacing="2" class="upline">
 										<tr>
 											<td style="text-align:right; width:20%">会员邮箱：</td>
-											<td><input type="text" name="lname" disabled="disabled" value="${email} "/></p></td>
+											<td><input type="text" name="lname" disabled="disabled" value="${user.email} "/></p></td>
 											
 											<td>&nbsp;</td>
 
@@ -81,7 +81,7 @@ function func(){
 										</tr>
 										<tr>
 											<td style="text-align:right">会员名：</td>
-											<td><input type="text" name="lname" disabled="disabled" value="${username} "/></p></td>
+											<td><input type="text" name="lname" disabled="disabled" value="${user.username} "/></p></td>
 											
 											<td>&nbsp;</td>
 										</tr>
