@@ -10,7 +10,7 @@
 
 <script type="text/javascript">
 function func(){
-	           /* 失去焦点  */
+	        
 	        var vas = document.getElementById("pwdd").value;
 			var vas1 = document.getElementById("pwd").value;
 	if(vas!=vas1){
@@ -22,7 +22,7 @@ function func(){
 	       }
 </script>
 <body class="main">
-<button onblur="oo()">0000000000000</button>
+
 	<jsp:include page="head.jsp" />
 
 	<jsp:include page="menu_search.jsp" />

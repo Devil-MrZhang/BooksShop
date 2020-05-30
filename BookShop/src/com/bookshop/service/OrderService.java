@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bookshop.dao.OrderDao;
+import com.bookshop.dao.OrderItemDao;
 import com.bookshop.dao.ProductDao;
 import com.bookshop.model.Order;
 import com.bookshop.model.OrderItem;
