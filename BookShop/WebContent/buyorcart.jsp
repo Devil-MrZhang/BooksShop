@@ -1,12 +1,54 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
+<title>电子书城</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css" type="text/css" />
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/my.js">
+	
+</script>
 </head>
-<body>
-	<a href="${pageContext.request.contextPath}/product/findAction_findAllweb.action">继续购物</a>，<a href="${pageContext.request.contextPath}/cart.jsp">查看购物车</a>
+
+<body class="main" onload="startSecond()">
+
+	<jsp:include page="head.jsp"></jsp:include>
+	<jsp:include page="menu_search.jsp" />
+
+
+
+	<div id="divcontent">
+		<table width="850px" border="0" cellspacing="0">
+			<tr>
+				<td style="padding:30px; text-align:center"><table width="60%"
+						border="0" cellspacing="0" style="margin-top:70px">
+						<tr>
+							<td style="width:98"><img
+								src="${pageContext.request.contextPath }/images/IconTexto_WebDev_009.jpg" width="128" height="128" />
+							</td>
+							<td style="padding-top:30px"><font
+								style="font-weight:bold; color:#FF0000">添加成功</font><br />
+								<br /> 
+								
+									<a href="${pageContext.request.contextPath}/product/findAction_findAllweb.action">继续购物</a>，<a href="${pageContext.request.contextPath}/cart.jsp">查看购物车</a>
+								
+								</td>
+						</tr>
+					</table>
+					<h1>&nbsp;</h1></td>
+			</tr>
+		</table>
+	</div>
+
+
+
+	<jsp:include page="foot.jsp"/>
+
+
 </body>
 </html>

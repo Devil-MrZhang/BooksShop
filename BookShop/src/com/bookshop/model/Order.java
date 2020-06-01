@@ -19,7 +19,7 @@ public class Order {
 	private String receiverName;
 	private String receiverPhone;
 	private String receiverAddress;
-	private Integer payState;
+	private Integer payState=0;
 	private Date ordertime;
 	public Integer getId() {
 		return id;
@@ -64,10 +64,7 @@ public class Order {
 		this.payState = payState;
 	}
 	public Date getOrdertime() {
-		Date nowdate=new Date();
-		//转换时间格式
-		SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-		ordertime = Timestamp.valueOf(simpleDate.format(nowdate));
+		
 
 		return ordertime;
 	}
