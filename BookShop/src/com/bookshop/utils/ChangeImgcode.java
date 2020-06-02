@@ -71,7 +71,7 @@ public class ChangeImgcode {
 			x += 30;
 		}	
 		session.setAttribute("checkcode_session", word);
-	
+		System.out.println("session---------code"+word);
 		graphics.setColor(getRandColor(160, 200));
 		int x1;
 		int x2;

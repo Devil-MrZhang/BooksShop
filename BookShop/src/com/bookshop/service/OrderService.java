@@ -3,6 +3,9 @@
  */
 package com.bookshop.service;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -36,6 +39,10 @@ public class OrderService{
 	private OrderItemDao orderItemDao;
 	
 	public void submitOrder(Order order){
+		Date nowdate=new Date();
+		//转换时间格式
+		SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 		
+		order.setOrdertime(Timestamp.valueOf(simpleDate.format(nowdate)));
 		orderDao.addOrder(order);
 	}
 

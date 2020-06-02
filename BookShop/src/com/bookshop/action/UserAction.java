@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
@@ -120,13 +121,51 @@ public class UserAction extends ActionSupport {
 	}
 
 	public void validateRegister() {
+		
+		
+		//判断验证码
 		String ckcode = request.getParameter("ckcode");
-		String checkcode_session = (String) request.getSession().getAttribute("checkcode_session");
-		System.out.println(checkcode_session + "------" + ckcode);
-		if (!checkcode_session.equals(ckcode)) {
-			this.addFieldError("ckcode_msg", "验证码错误");
+		String repassword=request.getParameter("repassword");
+		
+		if (ckcode==null) {
+			this.addFieldError("ckcode_msg", "验证码不能为空");
+		}else if (user.getUsername()==null) {
+			this.addFieldError("username", "用户名不能为空");
+		}else if (user.getPassword()==null) {
+			this.addFieldError("password", "密码不能为空");
+		}else if (user.getEmail()==null) {
+			this.addFieldError("email", "邮箱不能为空");
+		}else if (repassword==null) {
+			this.addFieldError("repassword", "请再次输入密码");
+		}else{
+			//都不为空判断
+			String checkcode_session = (String) request.getSession().getAttribute("checkcode_session");
+			String reg_Email="^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
+			boolean result=Pattern.matches(reg_Email, user.getEmail());
+			if (!checkcode_session.equals(ckcode)) {
+				this.addFieldError("ckcode_msg", "验证码错误");
 
+			}
+			
+			if (user.getUsername().length()<6) {
+				this.addFieldError("username", "用户名必须大于6位");
+			}if (user.getPassword().length()<6) {
+				this.addFieldError("password", "密码必须大于6位");
+			}if (!user.getPassword().equals(repassword)) {
+				this.addFieldError("repassword", "两次密码输入不一致");
+			}if (!result) {
+				this.addFieldError("email", "请输入正确的邮箱格式");
+			}
+			
+			
 		}
+			
+		
+		
+		
+		//判断用户名
+		
+		
 
 	}
 	
@@ -150,6 +189,7 @@ public class UserAction extends ActionSupport {
 		
 		
 		User user = userService.login(username, password);
+
 		
 			System.out.println("-------------"+user+"----------------");
 			
@@ -160,11 +200,12 @@ public class UserAction extends ActionSupport {
 			else if (user.getRole()==0) {
 				session.setAttribute("user", user);
 				
-			System.out.println("用户登录成功！");
+			System.out.println("------用户登录成功！------");
 			return "usersucceed";
 			}else if (user.getRole()==1) {
+
 			session.setAttribute("user", user);
-			System.out.println("管理用户登录成功！");
+			System.out.println("------管理用户登录成功！------");
 			return "adminsucceed";	
 			}
 			else {

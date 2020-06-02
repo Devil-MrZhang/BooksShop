@@ -7,7 +7,7 @@
 
 <title>bookStore注册页面</title>
 <%--导入css --%>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 <script type="text/javascript">
 	function changeImage() {
 
@@ -36,27 +36,37 @@
 								<td style="text-align:right; width:20%">会员邮箱：</td>
 								<td style="width:40%">
 								<input type="text" class="textinput"
-									name="user.email" /></td>
-								<td><font color="#999999">请输入有效的邮箱地址</font></td>
+									name="user.email" value="${requestScope.user.email }"/></td>
+								<td><font color="red">
+									<s:fielderror fieldName="email"></s:fielderror>
+								</font></td>
 							</tr>
 							<tr>
 								<td style="text-align:right">会员名：</td>
 								<td>
-									<input type="text" class="textinput" name="user.username" />
+									<input type="text" class="textinput" name="user.username" value="${requestScope.user.username }"/>
 								</td>
-								<td><font color="#999999">用户名设置至少6位</font></td>
+								<td><font color="red">
+									<s:fielderror fieldName="username"></s:fielderror>
+								</font></td>
 							</tr>
 							<tr>
 								<td style="text-align:right">密码：</td>
 								<td><input type="password" class="textinput"
-									name="user.password" /></td>
-								<td><font color="#999999">密码设置至少6位</font></td>
+									name="user.password"/></td>
+								<td>
+								<font color="red">
+									<s:fielderror fieldName="passsword"></s:fielderror>
+								</font>
+								</td>
 							</tr>
 							<tr>
 								<td style="text-align:right">重复密码：</td>
 								<td><input type="password" class="textinput"
 									name="repassword" /></td>
-								<td>&nbsp;</td>
+								<td>	<font color="red">
+									<s:fielderror fieldName="repasssword"></s:fielderror>
+								</font></td>
 							</tr>
 							<tr>
 								<td style="text-align:right">性别：</td>
@@ -68,11 +78,11 @@
 							<tr>
 								<td style="text-align:right">联系电话：</td>
 								<td colspan="2"><input type="text" class="textinput"
-									style="width:350px" name="user.telephone" /></td>
+									style="width:350px" name="user.telephone" value="${requestScope.user.telephone }"/></td>
 							</tr>
 							<tr>
 								<td style="text-align:right">个人介绍：</td>
-								<td colspan="2"><textarea class="textarea" name="user.introduce"></textarea>
+								<td colspan="2"><textarea class="textarea" name="user.introduce">${requestScope.user.introduce }</textarea>
 								</td>
 							</tr>
 
@@ -85,9 +95,10 @@
 							<tr>
 								<td style="text-align:right; width:20%">输入校验码：</td>
 								<td style="width:50%"><input type="text" class="textinput" name="ckcode"/>
+							
 								</td>
-								<td><s:property value='<s:fielderror fieldName="ckcode_msg"></s:fielderror>' />
-									
+								<td>
+									<font color="red"><s:fielderror fieldName="ckcode_msg"></s:fielderror></font>
 								</td>
 							</tr>
 							<tr>
@@ -105,7 +116,7 @@
 						<table width="70%" border="0" cellspacing="0">
 							<tr>
 								<td style="padding-top:20px; text-align:center"><input
-									type="image" src="images/signup.gif" name="submit" border="0">
+									type="image" src="${pageContext.request.contextPath}/images/signup.gif" name="submit" border="0">
 								</td>
 							</tr>
 						</table></td>
@@ -120,7 +131,7 @@
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
 				<td rowspan="2" style="width:10%"><img
-					src="images/bottomlogo.gif" width="195" height="50"
+					src="${pageContext.request.contextPath}/images/bottomlogo.gif" width="195" height="50"
 					style="margin-left:175px" /></td>
 				<td style="padding-top:5px; padding-left:50px"><a href="#"><font
 						color="#747556"><b>CONTACT US</b> </font> </a></td>
