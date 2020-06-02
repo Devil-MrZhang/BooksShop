@@ -3,6 +3,18 @@
 	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.4">
+	
+	<!-- 管理用户登录拦截器 -->
+	<filter>
+      <filter-name>userFilter</filter-name>
+      <filter-class>com.bookshop.filer.UserFiler</filter-class>
+   </filter>
+
+	<filter-mapping>
+    	<filter-name>userFilter</filter-name>
+   	 <url-pattern>/admin/*</url-pattern>
+	</filter-mapping>
+	
 	<!-- 配置spring随着服务器一起启动 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -37,4 +49,7 @@
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	
+	
+	
 </web-app>

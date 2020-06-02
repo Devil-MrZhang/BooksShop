@@ -157,12 +157,13 @@ public class UserAction extends ActionSupport {
 				System.out.println("用户登录失败，请重新输入");
 				return "failed";
 			}
-			else if (user.getRole()==1) {
+			else if (user.getRole()==0) {
 				session.setAttribute("user", user);
 				
 			System.out.println("用户登录成功！");
 			return "usersucceed";
-			}else if (user.getRole()==2) {
+			}else if (user.getRole()==1) {
+			session.setAttribute("user", user);
 			System.out.println("管理用户登录成功！");
 			return "adminsucceed";	
 			}

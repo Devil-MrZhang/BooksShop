@@ -5,7 +5,7 @@
 <head>
 <title>电子书城</title>
 
-<link rel="stylesheet" href="/BookShop/css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 </head>
 
 <body class="main">
