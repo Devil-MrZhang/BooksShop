@@ -71,6 +71,58 @@ public class AdminAction extends ActionSupport {
 
 	public String execute() throws Exception {
 		books=service.findAll();
+		
+		for (int i = 0; i < books.size(); i++) {
+			Product product = books.get(i);
+			String value = product.getCategory();
+			switch (value) {
+			case "1":
+				product.setCategory("文学");
+				break;
+			case "2":
+				product.setCategory("生活");
+				break;
+			case "3":
+				product.setCategory("计算机");
+				break;
+			case "4":
+				product.setCategory("外语");
+				break;
+			case "5":
+				product.setCategory("经营");
+				break;
+			case "6":
+				product.setCategory("励志");
+				break;
+			case "7":
+				product.setCategory("社科");
+				break;
+			case "8":
+				product.setCategory("学术");
+				break;
+			case "9":
+				product.setCategory("少儿");
+				break;
+			case "10":
+				product.setCategory("艺术");
+				break;
+			case "11":
+				product.setCategory("原版");
+				break;
+			case "12":
+				product.setCategory("科技");
+				break;
+			case "13":
+				product.setCategory("考试");
+				break;
+			case "14":
+				product.setCategory("生活百科");
+				break;
+
+			default:
+				break;
+			}
+		}
 		System.out.println(books);
 		return "list";
 	}
@@ -188,7 +240,7 @@ public class AdminAction extends ActionSupport {
 	 */
 	public String toUpdate(){
 		pr = service.getProductById(id);
-		System.out.println(pr.getImg_url());
+		category=pr.getCategory();
 		return "toUpdate";
 	}
 	/**
