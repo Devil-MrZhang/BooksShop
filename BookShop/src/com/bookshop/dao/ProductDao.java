@@ -48,7 +48,8 @@ public interface ProductDao {
 	 *@date 2020年5月5日
 	  @describe 搜索框
 	 */
-	public Product findProName(String name);
+	public PageResults<Product> findProName(String hql,
+			int pageNo, int pageSize,String names); 
 	/**
 	 * 分页获取全部商品
 	 *@author 汪龙炎

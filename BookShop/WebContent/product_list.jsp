@@ -25,7 +25,7 @@
 
 				<td>
 					<div style="text-align:right; margin:5px 10px 5px 0px">
-						<a href="index.jsp">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;计算机&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;图书列表
+						<a href="${pageContext.request.contextPath }/index.jsp">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;计算机&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;图书列表
 					</div>
 
 					<table cellspacing="0" class="listcontent">
@@ -33,12 +33,12 @@
 							<td>
 								<h1>商品目录</h1>
 								<hr />
-								<h1>计算机</h1>&nbsp;&nbsp;&nbsp;&nbsp;共种${5*pageResults.pageCount}商品
+								<h1>计算机</h1>&nbsp;&nbsp;&nbsp;&nbsp;共种${pp*pageResults.pageCount}商品
 								<hr />
 								<div style="margin-top:20px; margin-bottom:5px">
 									<img
-										src="#"
-										width="100%" height="38" />
+										src="${pageContext.request.contextPath }/ad/page_ad.jpg"
+										width="80%" height="38" />
 								</div>
                      
 								<table cellspacing="0" class="booklist">
@@ -48,7 +48,7 @@
 										
 												<div class="divbookpic">
 													<p>
-														<a href="#"><img
+														<a href="${pageContext.request.contextPath }/product/productAction_productInfo?productInfo.id=${book.id}&&productInfo.name=${book.name}&&productInfo.price=${book.price}&&productInfo.category=${book.category}&&productInfo.description=${book.description}&&productInfo.img_url=${book.img_url}&&productInfo.pnum=${book.pnum}"><img
 															src="${book.img_url}"
 															width="115" height="129" border="0" /> </a>
 													</p>
@@ -68,22 +68,21 @@
 
 
 								<div class="pagination">
-									<ul>
-
-
-										<li class="disablepage"><a
-											href="admin/findAction_findAllweb.action?pageNo=${pageResults.currentPage-1}">&lt;&lt;上一页</a>
-										</li>
-
-
-										<li>第  ${pageResults.currentPage}页/共${pageResults.pageCount}页</li>
-
-										<li class="nextPage"><a
-											href="admin/findAction_findAllweb.action?pageNo=${pageResults.pageNo}">&lt;&lt;下一页</a>
-										</li>
-
-
-									</ul>
+										<s:if test="#request.pageResults.pageCount > 1">
+										   <ul>
+												<li class="disablepage"><a
+													href="${pageContext.request.contextPath }/product/findAction_${whj}.action?pageNo=${pageResults.currentPage-1}">&lt;&lt;上一页</a>
+												</li>
+												<li>第  ${pageResults.currentPage}页/共${pageResults.pageCount}页</li>
+												<li class="nextPage"><a
+													href="${pageContext.request.contextPath }/product/findAction_${whj}.action?pageNo=${pageResults.pageNo}">&lt;&lt;下一页</a>
+												</li>
+									     </ul>
+										</s:if>
+										<s:else>
+										<li>共${pageResults.pageCount}页</li>
+										</s:else>
+									
 								</div></td>
 						</tr>
 					</table>
