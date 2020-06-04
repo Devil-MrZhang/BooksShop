@@ -60,34 +60,34 @@
 
 <div id="divmenu">
 	<a
-		href="product/findAction_findAllcategory.action?category2=aaa">文学</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=1">文学</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=aaa">生活</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=2">生活</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">计算机</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=3">计算机</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">外语</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=4">外语</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">经管</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=5">经管</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">励志</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=6">励志</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">社科</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=7">社科</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">学术</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=8">学术</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">少儿</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=9">少儿</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">艺术</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=10">艺术</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">原版</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=11">原版</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">科技</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=12">科技</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">考试</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=13">考试</a>
 	<a
-		href="product/findAction_findAllcategory.action?category2=计算机">生活百科</a>
-	<a href="product/findAction_findAllweb.action" style="color:#FFFF00">全部商品目录</a>
+		href="${pageContext.request.contextPath }/product/findAction_findAllcategory.action?category2=14">生活百科</a>
+	<a href="${pageContext.request.contextPath }/product/findAction_findAllweb.action" style="color:#FFFF00">全部商品目录</a>
 		
 </div>
 <div id="divsearch">

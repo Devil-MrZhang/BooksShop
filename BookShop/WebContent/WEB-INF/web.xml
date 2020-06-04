@@ -5,8 +5,8 @@
 	version="2.4">
 	
 	<!-- 管理用户登录拦截器 -->
-	<filter>
-      <filter-name>userFilter</filter-name>
+		<filter>
+     <filter-name>userFilter</filter-name>
       <filter-class>com.bookshop.filer.UserFiler</filter-class>
    </filter>
 
@@ -43,6 +43,8 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+
 
 	<!-- 欢迎文件列表 -->
 	<welcome-file-list>
