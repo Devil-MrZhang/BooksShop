@@ -65,6 +65,10 @@ public class AdminAction extends ActionSupport {
 	private int pp;
 	//所调用方法名字
 	private String whj;
+	//上传的文件名
+	private String fileFileName;
+	//上传的文件
+	private File file;
 	
 
 	
@@ -125,7 +129,7 @@ public class AdminAction extends ActionSupport {
 				break;
 			}
 		}
-		System.out.println(books);
+	
 		return "list";
 	}
 	/*
@@ -235,58 +239,16 @@ public class AdminAction extends ActionSupport {
 	 */
 	public String addBooks(){
 		
-		service.addBooks(p);
 		
-					//确定上传文件目录
-				    File filePath=new File("G:\\桌面\\快捷\\Images");
-				    if(!filePath.exists()){
-				    filePath.mkdirs();
-				}
-				   //确定临时文件目录
-				   File tempFilePath=new File("G:\\桌面\\快捷\\Images\\buffer\\");
-				   if(!tempFilePath.exists()){
-				   tempFilePath.mkdirs();
-				}
-				try{
-				   //创建文件工厂
-				  DiskFileItemFactory factory=new  DiskFileItemFactory();
-				  factory.setSizeThreshold(4096);//设置缓冲区大小，这里是4kb
-				  factory.setRepository(tempFilePath);//设置缓冲目录
-				  //创建上传文件操作对象
-				  ServletFileUpload upload=new  ServletFileUpload(factory);
-				  //限定上传文件大小
-				  upload.setSizeMax(4194304);//设置最大文件尺寸，这里是4MB
-				  //得到所有的请求上传文件
-				  List<FileItem>items=upload.parseRequest(request);
-				  Iterator<FileItem>i=items.iterator();
-				        while(i.hasNext()){
-					        FileItem fi=(FileItem)i.next();
-					        //检查当前项目是普通表单项目还是上传文件
-					        if(fi.isFormField()){
-						        //如果是普通表单项目，现实表单内容
-						        String fieldName=fi.getFieldName();
-						        //对应submit.html中的type="text"name="name"
-						        if(fieldName.equals("p.img_url")){
-							        //显示表单内容
-							        System.out.print("the field name is:" + fi.getString());
-						        }else{
-							        //如果是上传文件，显示文件名，
-						        	System.out.print("the upload name is:" + fi.getName());
-						        	System.out.print("<br>");
-							        String fileName=fi.getName();
-							        if(fileName!=null){
-								        File fullFile=new File(fi.getName());
-								        File savedFile=new File(filePath,fullFile.getName());
-								        fi.write(savedFile);
-								        System.out.print("上传成功");
-							        }
-						        }
-						        System.out.print("<br>");
-					        }
-				        }
-			    }catch(Exception e){
-			    	e.printStackTrace();
-			    }
+		String dirPath = ServletActionContext.getServletContext().getRealPath("upload");
+	
+		File target=new File(dirPath+"/"+fileFileName);
+		file.renameTo(target);
+		p.setImg_url(dirPath+"/"+fileFileName);
+		service.addBooks(p);
+		System.out.println(target);
+		System.out.println("------"+"上传的文件名"+fileFileName);
+				
 		return "addBooks";
 	}
 	/**
@@ -295,7 +257,12 @@ public class AdminAction extends ActionSupport {
 	 */
 	public String toUpdate(){
 		pr = service.getProductById(id);
+		
 		category=pr.getCategory();
+		
+		
+		
+		
 		return "toUpdate";
 	}
 	/**
@@ -303,15 +270,28 @@ public class AdminAction extends ActionSupport {
 	 * @return
 	 */
 	public String update(){
+		
+		System.out.println("1111111111111"+category);
+		
+		String dirPath = ServletActionContext.getServletContext().getRealPath("upload");
+		
+		File target=new File(dirPath+"/"+fileFileName);
+		file.renameTo(target);
+		
+		
 		Product pro = service.getProductById(id);
 		pro.setName(p.getName());
 		pro.setPrice(p.getPrice());
-		pro.setImg_url(p.getImg_url());
+		pro.setImg_url(dirPath+"/"+fileFileName);
 		pro.setPnum(p.getPnum());
-		pro.setCategory(p.getCategory());
+		pro.setCategory(category);
 		pro.setDescription(p.getDescription());
+		
+		System.out.println("updata********************"+dirPath+"/"+fileFileName);
+		
 		service.updateBooks(pro);
-		return "input";
+		System.out.println("updata");
+		return "update";
 	}
 	
 	/**
@@ -458,6 +438,22 @@ public class AdminAction extends ActionSupport {
 	public void setBookid(int bookid) {
 		this.bookid = bookid;
 	}
+	public String getFileFileName() {
+		return fileFileName;
+	}
+	public void setFileFileName(String fileFileName) {
+		this.fileFileName = fileFileName;
+	}
+	public File getFile() {
+		return file;
+	}
+	public void setFile(File file) {
+		this.file = file;
+	}
+	
+	
+	
+	
 	
 	
 

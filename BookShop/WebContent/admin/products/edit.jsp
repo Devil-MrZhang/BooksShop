@@ -26,9 +26,9 @@
 </style>
 <body>
 	
-
+${pr.id}
 	<form id="userAction_save_do" name="Form1"
-		action="${pageContext.request.contextPath}/admin/AdminAction_update.action">
+		action="${pageContext.request.contextPath}/admin/AdminAction_update" method="post" enctype="multipart/form-data">
 	
 		<input type="hidden" name="id" value="${pr.id}"/>
 		<table cellSpacing="1" cellPadding="5" width="100%" align="center"
@@ -55,23 +55,7 @@
 				<td class="ta_01" bgColor="#ffffff">
 				<s:select  list="#{'1':'文学','2':'生活','3':'计算机','4':'外语','5':'经营','6':'励志','7':'社科',
 				'8':'学术','9':'少儿','10':'艺术','11':'原版','12':'科技','13':'考试','14':'生活百科'}" name="category" id="category" />
-				<%-- <select name="p.category" id="category" value="">
-						<option value="0">--选择商品类别--</option>
-						<option value="1">文学</option>
-						<option value="2">生活</option>
-						<option value="3">计算机</option>
-						<option value="4">外语</option>
-						<option value="5">经营</option>
-						<option value="6">励志</option>
-						<option value="7">社科</option>
-						<option value="8">学术</option>
-						<option value="9">少儿</option>
-						<option value="10">艺术</option>
-						<option value="11">原版</option>
-						<option value="12">科技</option>
-						<option value="13">考试</option>
-						<option value="14">生活百科</option>
-				</select> --%>
+	
 				
 				</td>
 			</tr>
@@ -79,8 +63,9 @@
 
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品图片：</td>
-				<td class="ta_01" bgColor="#ffffff" colSpan="3"><input
-					type="file"  size="30" name="p.img_url"  value="${pr.img_url}" /></td>
+				<td class="ta_01" bgColor="#ffffff" colSpan="3">
+				<input
+					type="file"  size="30" name="file" /></td>
 			</tr>
 			<TR>
 				<TD class="ta_01" align="center" bgColor="#f5fafe">商品描述：</TD>

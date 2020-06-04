@@ -19,7 +19,7 @@ public class UserFiler implements Filter {
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		System.out.println("——————————管理用户拦截器损坏!——————————");
+
 
 	}
 
@@ -27,7 +27,6 @@ public class UserFiler implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		System.out.println("——————————进入管理用户拦截器——————————");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
@@ -35,18 +34,18 @@ public class UserFiler implements Filter {
 		System.out.println(user.getPassword());
 		if (user != null && user.getRole() == 1) {
 			// 如果有下一个过滤器则跳转到下一个过滤器否则目标页面
-			System.out.println("——————————拦截器察觉管理用户已登录！——————————");
+		
 			System.out.println(user);
 			chain.doFilter(request, response);
 		} else {
-			System.out.println("——————————拦截器察觉管理用户未登录！——————————");
+		
 			res.sendRedirect(req.getContextPath() + "/login.jsp");
 		}
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		System.out.println("——————————管理用户拦截器初始化成功！——————————");
+	
 
 	}
 
