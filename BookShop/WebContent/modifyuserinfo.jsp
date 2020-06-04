@@ -5,23 +5,58 @@
 <html>
 <head>
 <title>电子书城</title>
-<link rel="stylesheet" href="css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css" type="text/css" />
 </head>
-
-<script type="text/javascript">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"><script type="text/javascript">
 function func(){
 	        
 	        var vas = document.getElementById("pwdd").value;
-			var vas1 = document.getElementById("pwd").value;
-	if(vas!=vas1){
-		
-		alert("两次密码输入不一致");
+			var vas1 = document.getElementById("pwd").value;		
+			if(vas!=vas1){
+			alert("两次密码输入不一致");}}
+	/* --------------------------- */
+	
 
-	}          
-	       
-	       }
 </script>
+
+<script type="text/javascript">
+	$(function(){
+		$('#ypwd').blur(function(){
+			
+			 var params = {
+						ypwd :document.getElementById("ypwd").value,
+					};
+			 
+			$.post("ajax.action" , params, function(data){
+				
+				var jsonObject = eval("(" + data + ")");
+				
+				if (jsonObject != null) {
+					var song = jsonObject.songList;
+						if(song==1)	{
+							alert("验证过关");
+							
+							
+						}
+						else{
+							alert("输入正确的密码");
+							$('#tijiao').attr("disabled","disabled");
+						}
+				}
+				
+				
+				
+				
+			}) ;
+		});
+	}) ;
+ 
+ 
+</script>
+
 <body class="main">
+
+
 
 	<jsp:include page="head.jsp" />
 
@@ -86,6 +121,12 @@ function func(){
 											<td>&nbsp;</td>
 										</tr>
 										<tr>
+											<td style="text-align:right">当前密码：</td>
+											<td><input id="ypwd" type="password" name="ypwd"
+												class="textinput" /> </td>
+											<td><font  color="#999999">修改密码前，请先验证是否是本人。</font></td>
+										</tr>
+										<tr>
 											<td style="text-align:right">修改密码：</td>
 											<td><input id="pwd" type="password" name="pwd"
 												class="textinput" /></td>
@@ -123,8 +164,8 @@ function func(){
 
 									<p style="text-align:center">
 
-										<input type="image" src="images/botton_gif_025.gif" border="0">
-
+										<input id="tijiao" type="image"  src="images/botton_gif_025.gif" border="0">
+										
 									</p>
 									<p style="text-align:center">&nbsp;</p>
 								</form>

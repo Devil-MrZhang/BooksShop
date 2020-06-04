@@ -72,4 +72,19 @@
 	
 	</package>
 	
+	
+	<!-- ajax -->
+	<package name="default" namespace="/" extends="json-default">
+		<action name="ajax" class="com.bookshop.action.UserAction" method="ajax">
+		
+			<result type="json">
+				<param name="root">root</param>
+			</result>
+		</action>
+ 
+	</package>
+
+
+
+	
 </struts>

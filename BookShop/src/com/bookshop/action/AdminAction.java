@@ -54,6 +54,7 @@ public class AdminAction extends ActionSupport {
 	private int cid;
 	//鍟嗗搧绫诲埆
 	private String category;
+	private int bookid=0;
 	//鍟嗗搧鍚嶇О
 	private String cname;
 	//鏈�灏忎环
@@ -134,9 +135,9 @@ public class AdminAction extends ActionSupport {
 	public String check() {
 		String add = "price > " + minprice  + " and price < " + maxprice;
 
-		if (!category.equals("")) {
+		if (!(bookid==0)) {
 
-			add = add + " and category ='" + category + "'";
+			add = add + " and category ='" + bookid + "'";
 		}
 		if (!cname.equals("")) {
 			add = add + " and name like '%" + cname + "%'";
@@ -147,9 +148,62 @@ public class AdminAction extends ActionSupport {
 
 		String sql = "from Product  where " + add;
 		books = service.check(sql);
+		for (int i = 0; i < books.size(); i++) {
+			Product product = books.get(i);
+			String value = product.getCategory();
+			switch (value) {
+			case "1":
+				product.setCategory("文学");
+				break;
+			case "2":
+				product.setCategory("生活");
+				break;
+			case "3":
+				product.setCategory("计算机");
+				break;
+			case "4":
+				product.setCategory("外语");
+				break;
+			case "5":
+				product.setCategory("经营");
+				break;
+			case "6":
+				product.setCategory("励志");
+				break;
+			case "7":
+				product.setCategory("社科");
+				break;
+			case "8":
+				product.setCategory("学术");
+				break;
+			case "9":
+				product.setCategory("少儿");
+				break;
+			case "10":
+				product.setCategory("艺术");
+				break;
+			case "11":
+				product.setCategory("原版");
+				break;
+			case "12":
+				product.setCategory("科技");
+				break;
+			case "13":
+				product.setCategory("考试");
+				break;
+			case "14":
+				product.setCategory("生活百科");
+				break;
+
+			default:
+				break;
+			}}
+		
 		System.out.println(books);
 		return "list";
 	}
+	
+
 
 	/**
 	 * 
@@ -397,6 +451,12 @@ public class AdminAction extends ActionSupport {
 	}
 	public void setWhj(String whj) {
 		this.whj = whj;
+	}
+	public int getBookid() {
+		return bookid;
+	}
+	public void setBookid(int bookid) {
+		this.bookid = bookid;
 	}
 	
 	

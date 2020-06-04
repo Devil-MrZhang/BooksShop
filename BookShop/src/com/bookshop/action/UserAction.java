@@ -31,9 +31,13 @@ import org.springframework.stereotype.Controller;
 import com.bookshop.model.User;
 import com.bookshop.service.UserService;
 import com.bookshop.utils.ChangeImgcode;
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sun.net.httpserver.Authenticator.Success;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 /**
  * @author 张家宝
@@ -55,6 +59,8 @@ public class UserAction extends ActionSupport {
 	public String pwd;
 	public String pwdd;
 	public String gender="男";
+	private String root;
+	public String ypwd;
 	
 	
 	
@@ -101,6 +107,24 @@ public class UserAction extends ActionSupport {
 		}
 		
 		
+	}
+	
+	public String ajax(){
+		System.out.println("ajax-------------------");
+		User u1 = (User) session.getAttribute("user");
+		System.out.println("当前密码是："+u1.getPassword());
+		JSONObject json=new JSONObject();
+		System.out.println("获取到的密码："+ypwd);
+		if(ypwd.equals(u1.getPassword())){
+			json.put("songList", "1");
+		}else{
+		json.put("songList", "2");
+		request.setAttribute("yz", "输入错误");}
+		this.root = json.toString();
+		System.out.println("root="+root.toString());
+		return Action.SUCCESS ;
+
+
 	}
 	
 	public String register() {
@@ -243,5 +267,12 @@ public class UserAction extends ActionSupport {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public String getRoot() {
+		return root;
+	}
+	public void setRoot(String root) {
+		this.root = root;
+	}
+	
 
 }

@@ -32,6 +32,7 @@ public class UserFiler implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("user");
+		System.out.println(user.getPassword());
 		if (user != null && user.getRole() == 1) {
 			// 如果有下一个过滤器则跳转到下一个过滤器否则目标页面
 			System.out.println("——————————拦截器察觉管理用户已登录！——————————");
