@@ -67,9 +67,11 @@ public class ProductService{
 	 *@date 2020年5月5日
 	  @describe 搜索框
 	 */
-	public Product findProName(String name){
-		
-			return productDao.findProName(name);
+	public PageResults<Product> findProName(int pageNo,String names){
+		PageResults<Product> qqq= productDao.findProName("from Product p where p.name like ?", pageNo, 4,names);
+		 
+		 System.out.println("======service========="+qqq.getResults());
+			return productDao.findProName("from Product p where p.name like ?", pageNo,4,names);
 		}
 	/**
      * 全部商品分页

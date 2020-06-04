@@ -41,7 +41,6 @@ public class AdminAction extends ActionSupport {
 	private HttpSession session;
 	private int id;
 	private String name;
-	private  Product pp;
 	private int pageNo;
 	private String category2;
 	private PageResults pageResults;
@@ -62,7 +61,9 @@ public class AdminAction extends ActionSupport {
 	//鏈�澶т环
 	private int maxprice=1000;
 	private Product pr;
-	
+	private int pp;
+	//所调用方法名字
+	private String whj;
 	
 
 	
@@ -258,20 +259,21 @@ public class AdminAction extends ActionSupport {
 		service.updateBooks(pro);
 		return "input";
 	}
+	
 	/**
 	 * 汪
 	 *@date 2020年5月5日
 	  @describe 搜索框
 	 */
 	public String findPname() {
-	 String qwe="findPname";
-			    
-		if(service.findProName(name)==null) {
-			qwe= "findPnametuo";
-		}else {
-			pp=service.findProName(name);
-		}		
-		return qwe;
+	 whj="findPname";						 		
+	 String names="%"+name+"%";	 
+	 pageResults=service.findProName(pageNo, names);	
+	 books=pageResults.getResults();
+	 pp=books.size();
+		
+	    
+	return "findPname";
 	}
 		 
 	/**
@@ -280,8 +282,10 @@ public class AdminAction extends ActionSupport {
 	  @describe 全部商品
 	 */
 	public String findAllweb(){
+		whj="findAllweb";
 		pageResults=service.findPageUser(pageNo);	
 		books=pageResults.getResults();
+		 pp=books.size();
 		return "findAllweb";
 	}
 	/**
@@ -290,8 +294,10 @@ public class AdminAction extends ActionSupport {
 	  @describe 分类商品
 	 */
 	public String findAllcategory(){
+		whj="findAllcategory";
 		pageResults=service.findPageProduct(pageNo, category2);	
 		books=pageResults.getResults();
+		 pp=books.size();
 		return "findAllcategory";
 	}
 	
@@ -301,10 +307,10 @@ public class AdminAction extends ActionSupport {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Product getPp() {
+	public int getPp() {
 		return pp;
 	}
-	public void setPp(Product pp) {
+	public void setPp(int pp) {
 		this.pp = pp;
 	}
 	public int getPageNo() {
@@ -386,6 +392,14 @@ public class AdminAction extends ActionSupport {
 	public void setPr(Product pr) {
 		this.pr = pr;
 	}
+	public String getWhj() {
+		return whj;
+	}
+	public void setWhj(String whj) {
+		this.whj = whj;
+	}
+	
+	
 
 	
 }
