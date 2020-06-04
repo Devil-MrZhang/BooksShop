@@ -15,9 +15,15 @@
 
 </HEAD>
 <script type="text/javascript">
-	//设置类别的默认值
-
 </script>
+<style type="text/css">
+#category{
+	position:absolute;
+	left:66%;
+	/* right:340px; */
+	top:66px;
+}
+</style>
 <body>
 	
 
