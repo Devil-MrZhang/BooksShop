@@ -108,6 +108,8 @@ public class UserAction extends ActionSupport {
 		if(pwd.equals(pwdd)){
 			User ue = (User)session.getAttribute("user");
 			System.out.println(ue.getPassword());
+			ue.setPassword(pwd);
+			userService.modiry(ue);
 			return "modiry";
 		}else{
 			request.setAttribute("modiry2", "两次密码不一致");
