@@ -32,7 +32,7 @@
 			<result name="input">/register.jsp</result>
 			<result name="changeImg">/register.jsp</result>
 			<result name="login">/login.jsp</result>
-			<result type="redirect" name="error" >/modifyuserinfo.jsp</result>
+			<result  name="error" >/modifyuserinfo2.jsp</result>
 			<result type="redirect" name="modiry">/myAccount.jsp</result>
 			
 			

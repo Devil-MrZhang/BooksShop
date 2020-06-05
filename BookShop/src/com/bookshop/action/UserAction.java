@@ -88,27 +88,35 @@ public class UserAction extends ActionSupport {
 	//修改账户信息
 	public String modiry() {
 		System.out.println("++++++++++++++++++++++++++++modiry");
-		System.out.println("id:"+id+"密码："+pwd+"手机号"+telephone+"性别:"+gender);
-		if(pwd.equals(pwdd)){
+		System.out.println("id:"+id+"手机号"+telephone+"性别:"+gender);
+		
 			user=userService.cha(id);
-			user.setPassword(pwd);
 			user.setTelephone(telephone);
 			user.setGender(gender);
 			user.setId(id);
 
-			userService.register(user);
+			//userService.register(user);
 
 			userService.modiry(user);
 
 			return "modiry";
+
+	}
+	//修改用户密码
+	public String modiry2() {
+		System.out.println("---密码："+pwd+"二次密码："+pwdd);
+		if(pwd.equals(pwdd)){
+			User ue = (User)session.getAttribute("user");
+			System.out.println(ue.getPassword());
+			return "modiry";
 		}else{
-			session.setAttribute("mm", "两次输入的密码不一样");
+			request.setAttribute("modiry2", "两次密码不一致");
 			return "error";
 		}
 		
 		
+		
 	}
-	
 	public String ajax(){
 		System.out.println("ajax-------------------");
 		User u1 = (User) session.getAttribute("user");

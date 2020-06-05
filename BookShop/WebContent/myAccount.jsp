@@ -29,6 +29,14 @@
 								href="${pageContext.request.contextPath}/modifyuserinfo.jsp">用户信息修改</a></td>
 						</tr>
 
+							<tr>
+							<td class="listtd"><img src="images/miniicon.gif" width="9"
+								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a
+								href="${pageContext.request.contextPath }/modifyuserinfo2.jsp">用户密码修改</a>
+							</td>
+						</tr>
+						
+						
 						<tr>
 							<td class="listtd"><img src="${pageContext.request.contextPath}images/miniicon.gif" width="9"
 								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath }/order/orderAction_getOrders">订单查询</a>
