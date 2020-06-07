@@ -35,6 +35,8 @@ public class OrderAction extends ActionSupport {
 	private Order order;
 	private List<Order> orderlist;
 	
+	private int count;//订单的数量
+	
 	public OrderAction() {
 		 req=ServletActionContext.getRequest();
 		resp=ServletActionContext.getResponse();
@@ -113,6 +115,7 @@ public class OrderAction extends ActionSupport {
 		User user =  (User) session.getAttribute("user");
 		orderlist=orderService.getOrders(user.getId());
 		System.out.println(orderlist.size()+"*****************");
+		count=orderlist.size();
 		return "orderlist";
 	}
 	
@@ -133,6 +136,15 @@ public class OrderAction extends ActionSupport {
 		this.orderlist = orderlist;
 	}
 
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	
 
 
 	

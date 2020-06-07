@@ -33,11 +33,11 @@
 							<td>
 								<h1>商品目录</h1>
 								<hr />
-								<h1>计算机</h1>&nbsp;&nbsp;&nbsp;&nbsp;共种${pp*pageResults.pageCount}商品
+								&nbsp;&nbsp;&nbsp;&nbsp;共种${pp*pageResults.pageCount}商品
 								<hr />
 								<div style="margin-top:20px; margin-bottom:5px">
 									<img
-										src="${pageContext.request.contextPath }/ad/page_ad.jpg"
+										src="${pageContext.request.contextPath }/images/productlist.gif"
 										width="80%" height="38" />
 								</div>
                      
