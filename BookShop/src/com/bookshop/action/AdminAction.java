@@ -6,6 +6,7 @@ package com.bookshop.action;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
@@ -41,7 +42,10 @@ public class AdminAction extends ActionSupport {
 	private HttpSession session;
 	private int id;
 	private String name;
-	private  Product pp;
+	//商品数量
+	private int pp;
+	//所调用方法名字
+	private String whj;
 	private int pageNo;
 	private String category2;
 	private PageResults pageResults;
@@ -125,12 +129,13 @@ public class AdminAction extends ActionSupport {
 	/**
 	 * 娣诲姞涔�
 	 * @return
+	 * @throws Exception 
 	 */
-	public String addBooks(){
+	public String addBooks(HttpServletRequest request) throws Exception{
 		
 		service.addBooks(p);
 		
-					//确定上传文件目录
+					/*//确定上传文件目录
 				    File filePath=new File("G:\\桌面\\快捷\\Images");
 				    if(!filePath.exists()){
 				    filePath.mkdirs();
@@ -179,7 +184,48 @@ public class AdminAction extends ActionSupport {
 				        }
 			    }catch(Exception e){
 			    	e.printStackTrace();
-			    }
+			    }*/
+		
+		
+		
+		 System.out.println("======文件上传成功=====");
+
+	        //使用fileupload组件完成文件上传
+	        //上传位置
+	        String path=request.getSession().getServletContext().getRealPath("/images/");
+	        //判断该路径是否存在
+	        File file=new File(path);
+	        if(!file.exists()){
+	            //创建该文件夹
+	            file.mkdir();
+
+	        }
+	        //解析request对象，获取上传文件项
+	        DiskFileItemFactory factory=new DiskFileItemFactory();
+	        ServletFileUpload upload=new ServletFileUpload(factory);
+	        //解析request
+	        List<FileItem> items = upload.parseRequest(request);
+	        //遍历
+	        for (FileItem item:items){
+	            //进行判断，当前item对象是否是上传文件项
+	            if(item.isFormField()){
+	                //说明是普通表单项目
+	            }else {
+	                //说明是上传表单项目
+	                //获取上传文件的名称
+	                String filename = item.getName();
+	                //把文件的名称设置唯一值，uuid
+	                UUID.randomUUID().toString().replace("-","");
+	                //完成文件上传
+	                item.write(new File(path,filename));
+	                //删除临时文件
+	                item.delete();
+
+	            }
+	        }
+		
+		
+		
 		return "addBooks";
 	}
 	/**
@@ -212,14 +258,14 @@ public class AdminAction extends ActionSupport {
 	  @describe 搜索框
 	 */
 	public String findPname() {
-	 String qwe="findPname";
-			    
-		if(service.findProName(name)==null) {
-			qwe= "findPnametuo";
-		}else {
-			pp=service.findProName(name);
-		}		
-		return qwe;
+	 whj="findPname";						 		
+	 String names="%"+name+"%";	 
+	 pageResults=service.findProName(pageNo, names);	
+	 books=pageResults.getResults();
+	 pp=books.size();
+		
+	    
+	return "findPname";
 	}
 		 
 	/**
@@ -228,8 +274,10 @@ public class AdminAction extends ActionSupport {
 	  @describe 全部商品
 	 */
 	public String findAllweb(){
+		whj="findAllweb";
 		pageResults=service.findPageUser(pageNo);	
 		books=pageResults.getResults();
+		 pp=books.size();
 		return "findAllweb";
 	}
 	/**
@@ -238,23 +286,33 @@ public class AdminAction extends ActionSupport {
 	  @describe 分类商品
 	 */
 	public String findAllcategory(){
+		whj="findAllcategory";
 		pageResults=service.findPageProduct(pageNo, category2);	
 		books=pageResults.getResults();
+		 pp=books.size();
 		return "findAllcategory";
 	}
 	
+	public String getWhj() {
+		return whj;
+	}
+	public void setWhj(String whj) {
+		this.whj = whj;
+	}
+	public int getPp() {
+		return pp;
+	}
+	public void setPp(int pp) {
+		this.pp = pp;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Product getPp() {
-		return pp;
-	}
-	public void setPp(Product pp) {
-		this.pp = pp;
-	}
+	
+	
 	public int getPageNo() {
 		return pageNo;
 	}

@@ -76,9 +76,9 @@ public class ProductDaoimpl extends BaseHibernateDAO<Product> implements Product
 	  @describe 搜索框
 	 */
 	@Override
-	public Product findProName(String name) {
+	public PageResults<Product> findProName(String hql, int pageNo, int pageSize, String names) {
 		// TODO Auto-generated method stub
-		return super.getByHQL("from Product p where p.name=?", name);
+		return super.findPageByFetchedHql(hql, null, pageNo, pageSize, names);
 	}
 	/**
 	 * 全部商品分页 	 
@@ -98,6 +98,8 @@ public class ProductDaoimpl extends BaseHibernateDAO<Product> implements Product
 		// TODO Auto-generated method stub
 		return super.findPageByFetchedHql(hql, null, pageNo, pageSize, category);
 	}
+
+	
 
 
 
