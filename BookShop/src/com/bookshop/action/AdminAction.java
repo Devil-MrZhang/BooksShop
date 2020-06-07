@@ -42,10 +42,9 @@ public class AdminAction extends ActionSupport {
 	private HttpSession session;
 	private int id;
 	private String name;
-	//商品数量
-	private int pp;
-	//所调用方法名字
-	private String whj;
+
+
+
 	private int pageNo;
 	private String category2;
 	private PageResults pageResults;
@@ -59,6 +58,7 @@ public class AdminAction extends ActionSupport {
 	private int cid;
 	//鍟嗗搧绫诲埆
 	private String category;
+	private int bookid=0;
 	//鍟嗗搧鍚嶇О
 	private String cname;
 	//鏈�灏忎环
@@ -66,7 +66,13 @@ public class AdminAction extends ActionSupport {
 	//鏈�澶т环
 	private int maxprice=1000;
 	private Product pr;
-	
+	private int pp;
+	//所调用方法名字
+	private String whj;
+	//上传的文件名
+	private String fileFileName;
+	//上传的文件
+	private File file;
 	
 
 	
@@ -75,7 +81,59 @@ public class AdminAction extends ActionSupport {
 
 	public String execute() throws Exception {
 		books=service.findAll();
-		System.out.println(books);
+		
+		for (int i = 0; i < books.size(); i++) {
+			Product product = books.get(i);
+			String value = product.getCategory();
+			switch (value) {
+			case "1":
+				product.setCategory("文学");
+				break;
+			case "2":
+				product.setCategory("生活");
+				break;
+			case "3":
+				product.setCategory("计算机");
+				break;
+			case "4":
+				product.setCategory("外语");
+				break;
+			case "5":
+				product.setCategory("经营");
+				break;
+			case "6":
+				product.setCategory("励志");
+				break;
+			case "7":
+				product.setCategory("社科");
+				break;
+			case "8":
+				product.setCategory("学术");
+				break;
+			case "9":
+				product.setCategory("少儿");
+				break;
+			case "10":
+				product.setCategory("艺术");
+				break;
+			case "11":
+				product.setCategory("原版");
+				break;
+			case "12":
+				product.setCategory("科技");
+				break;
+			case "13":
+				product.setCategory("考试");
+				break;
+			case "14":
+				product.setCategory("生活百科");
+				break;
+
+			default:
+				break;
+			}
+		}
+	
 		return "list";
 	}
 	/*
@@ -85,9 +143,9 @@ public class AdminAction extends ActionSupport {
 	public String check() {
 		String add = "price > " + minprice  + " and price < " + maxprice;
 
-		if (!category.equals("")) {
+		if (!(bookid==0)) {
 
-			add = add + " and category ='" + category + "'";
+			add = add + " and category ='" + bookid + "'";
 		}
 		if (!cname.equals("")) {
 			add = add + " and name like '%" + cname + "%'";
@@ -98,9 +156,62 @@ public class AdminAction extends ActionSupport {
 
 		String sql = "from Product  where " + add;
 		books = service.check(sql);
+		for (int i = 0; i < books.size(); i++) {
+			Product product = books.get(i);
+			String value = product.getCategory();
+			switch (value) {
+			case "1":
+				product.setCategory("文学");
+				break;
+			case "2":
+				product.setCategory("生活");
+				break;
+			case "3":
+				product.setCategory("计算机");
+				break;
+			case "4":
+				product.setCategory("外语");
+				break;
+			case "5":
+				product.setCategory("经营");
+				break;
+			case "6":
+				product.setCategory("励志");
+				break;
+			case "7":
+				product.setCategory("社科");
+				break;
+			case "8":
+				product.setCategory("学术");
+				break;
+			case "9":
+				product.setCategory("少儿");
+				break;
+			case "10":
+				product.setCategory("艺术");
+				break;
+			case "11":
+				product.setCategory("原版");
+				break;
+			case "12":
+				product.setCategory("科技");
+				break;
+			case "13":
+				product.setCategory("考试");
+				break;
+			case "14":
+				product.setCategory("生活百科");
+				break;
+
+			default:
+				break;
+			}}
+		
 		System.out.println(books);
 		return "list";
 	}
+	
+
 
 	/**
 	 * 
@@ -131,102 +242,18 @@ public class AdminAction extends ActionSupport {
 	 * @return
 	 * @throws Exception 
 	 */
-	public String addBooks(HttpServletRequest request) throws Exception{
-		
+	public String addBooks(){
+
+
+		String dirPath = ServletActionContext.getServletContext().getRealPath("upload");
+	
+		File target=new File(dirPath+"/"+fileFileName);
+		file.renameTo(target);
+		p.setImg_url(dirPath+"/"+fileFileName);
 		service.addBooks(p);
-		
-					/*//确定上传文件目录
-				    File filePath=new File("G:\\桌面\\快捷\\Images");
-				    if(!filePath.exists()){
-				    filePath.mkdirs();
-				}
-				   //确定临时文件目录
-				   File tempFilePath=new File("G:\\桌面\\快捷\\Images\\buffer\\");
-				   if(!tempFilePath.exists()){
-				   tempFilePath.mkdirs();
-				}
-				try{
-				   //创建文件工厂
-				  DiskFileItemFactory factory=new  DiskFileItemFactory();
-				  factory.setSizeThreshold(4096);//设置缓冲区大小，这里是4kb
-				  factory.setRepository(tempFilePath);//设置缓冲目录
-				  //创建上传文件操作对象
-				  ServletFileUpload upload=new  ServletFileUpload(factory);
-				  //限定上传文件大小
-				  upload.setSizeMax(4194304);//设置最大文件尺寸，这里是4MB
-				  //得到所有的请求上传文件
-				  List<FileItem>items=upload.parseRequest(request);
-				  Iterator<FileItem>i=items.iterator();
-				        while(i.hasNext()){
-					        FileItem fi=(FileItem)i.next();
-					        //检查当前项目是普通表单项目还是上传文件
-					        if(fi.isFormField()){
-						        //如果是普通表单项目，现实表单内容
-						        String fieldName=fi.getFieldName();
-						        //对应submit.html中的type="text"name="name"
-						        if(fieldName.equals("p.img_url")){
-							        //显示表单内容
-							        System.out.print("the field name is:" + fi.getString());
-						        }else{
-							        //如果是上传文件，显示文件名，
-						        	System.out.print("the upload name is:" + fi.getName());
-						        	System.out.print("<br>");
-							        String fileName=fi.getName();
-							        if(fileName!=null){
-								        File fullFile=new File(fi.getName());
-								        File savedFile=new File(filePath,fullFile.getName());
-								        fi.write(savedFile);
-								        System.out.print("上传成功");
-							        }
-						        }
-						        System.out.print("<br>");
-					        }
-				        }
-			    }catch(Exception e){
-			    	e.printStackTrace();
-			    }*/
-		
-		
-		
-		 System.out.println("======文件上传成功=====");
-
-	        //使用fileupload组件完成文件上传
-	        //上传位置
-	        String path=request.getSession().getServletContext().getRealPath("/images/");
-	        //判断该路径是否存在
-	        File file=new File(path);
-	        if(!file.exists()){
-	            //创建该文件夹
-	            file.mkdir();
-
-	        }
-	        //解析request对象，获取上传文件项
-	        DiskFileItemFactory factory=new DiskFileItemFactory();
-	        ServletFileUpload upload=new ServletFileUpload(factory);
-	        //解析request
-	        List<FileItem> items = upload.parseRequest(request);
-	        //遍历
-	        for (FileItem item:items){
-	            //进行判断，当前item对象是否是上传文件项
-	            if(item.isFormField()){
-	                //说明是普通表单项目
-	            }else {
-	                //说明是上传表单项目
-	                //获取上传文件的名称
-	                String filename = item.getName();
-	                //把文件的名称设置唯一值，uuid
-	                UUID.randomUUID().toString().replace("-","");
-	                //完成文件上传
-	                item.write(new File(path,filename));
-	                //删除临时文件
-	                item.delete();
-
-	            }
-	        }
-		
-		
-		
-		return "addBooks";
+		System.out.println(target);
+		System.out.println("------"+"上传的文件名"+fileFileName);
+		return"addBooks";
 	}
 	/**
 	 * 璺宠浆鍒版洿鏂伴〉闈�
@@ -234,7 +261,12 @@ public class AdminAction extends ActionSupport {
 	 */
 	public String toUpdate(){
 		pr = service.getProductById(id);
-		System.out.println(pr.getImg_url());
+		
+		category=pr.getCategory();
+		
+		
+		
+		
 		return "toUpdate";
 	}
 	/**
@@ -242,16 +274,30 @@ public class AdminAction extends ActionSupport {
 	 * @return
 	 */
 	public String update(){
+		
+		System.out.println("1111111111111"+category);
+		
+		String dirPath = ServletActionContext.getServletContext().getRealPath("upload");
+		
+		File target=new File(dirPath+"/"+fileFileName);
+		file.renameTo(target);
+		
+		
 		Product pro = service.getProductById(id);
 		pro.setName(p.getName());
 		pro.setPrice(p.getPrice());
-		pro.setImg_url(p.getImg_url());
+		pro.setImg_url(dirPath+"/"+fileFileName);
 		pro.setPnum(p.getPnum());
-		pro.setCategory(p.getCategory());
+		pro.setCategory(category);
 		pro.setDescription(p.getDescription());
+		
+		System.out.println("updata********************"+dirPath+"/"+fileFileName);
+		
 		service.updateBooks(pro);
-		return "input";
+		System.out.println("updata");
+		return "update";
 	}
+	
 	/**
 	 * 汪
 	 *@date 2020年5月5日
@@ -293,29 +339,7 @@ public class AdminAction extends ActionSupport {
 		return "findAllcategory";
 	}
 	
-	public String getWhj() {
-		return whj;
-	}
-	public void setWhj(String whj) {
-		this.whj = whj;
-	}
-	public int getPp() {
-		return pp;
-	}
-	public void setPp(int pp) {
-		this.pp = pp;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	
-	
-	public int getPageNo() {
-		return pageNo;
-	}
 	public void setPageNo(int pageNo) {
 		this.pageNo = pageNo;
 	}
@@ -392,6 +416,57 @@ public class AdminAction extends ActionSupport {
 	public void setPr(Product pr) {
 		this.pr = pr;
 	}
+	public String getWhj() {
+		return whj;
+	}
+	public void setWhj(String whj) {
+		this.whj = whj;
+	}
+	public int getBookid() {
+		return bookid;
+	}
+	public void setBookid(int bookid) {
+		this.bookid = bookid;
+	}
+	public String getFileFileName() {
+		return fileFileName;
+	}
+	public void setFileFileName(String fileFileName) {
+		this.fileFileName = fileFileName;
+	}
+	public File getFile() {
+		return file;
+	}
+	public void setFile(File file) {
+		this.file = file;
+	}
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getPp() {
+		return pp;
+	}
+	public void setPp(int pp) {
+		this.pp = pp;
+	}
+	public int getPageNo() {
+		return pageNo;
+	}
+	
+	
+	
+	
+	
+	
 
 	
 }

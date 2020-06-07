@@ -5,7 +5,7 @@
 <head>
 <title>电子书城</title>
 
-<link rel="stylesheet" href="/BookShop/css/main.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 </head>
 
 <body class="main">
@@ -74,7 +74,7 @@
 																<tr>
 																	<td colspan="2"
 																		style="padding-top:10px; text-align:center"><a
-																		href="register.jsp"><img name="image"
+																		href="${pageContext.request.contextPath}/register.jsp"><img name="image"
 																			src="${pageContext.request.contextPath}/images/signupbutton.gif" width="135" height="33" />
 																	</a></td>
 																</tr>
@@ -88,7 +88,7 @@
 											<p>千种图书，供你挑选！注册即享受丰富折扣和优惠，便宜有好货！超过万本图书任您选。</p>
 											<p>超人气社区！精彩活动每一天。买卖更安心！支付宝交易超安全。</p>
 											<p style="text-align:right">
-												<a href="register.jsp"><img
+												<a href="${pageContext.request.contextPath}/register.jsp"><img
 													src="${pageContext.request.contextPath}/images/signupbutton.gif" width="135" height="33" /> </a>
 											</p>
 										</td>

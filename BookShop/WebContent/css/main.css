@@ -219,6 +219,7 @@ h1 {
 	position: static;
 	position: relative;
 	top: 5%;
+	
 }
 
 .divbookcover {
@@ -245,8 +246,9 @@ h1 {
 .divlisttitle {
 	line-height: 120%;
 	text-align:left;
-	text-align: center;
+
 	vertical-align: middle;
+	
 }
 
 #divfoot {

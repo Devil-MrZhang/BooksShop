@@ -47,20 +47,20 @@
 				<td class="ta_01" bgColor="#ffffff"><select name="p.category"
 					id="category">
 						<option value="" selected="selected">--选择商品类加--</option>
-						<option value="文学">文学</option>
-						<option value="生活">生活</option>
-						<option value="计算机">计算机</option>
-						<option value="外语">外语</option>
-						<option value="经营">经营</option>
-						<option value="励志">励志</option>
-						<option value="社科">社科</option>
-						<option value="学术">学术</option>
-						<option value="少儿">少儿</option>
-						<option value="艺术">艺术</option>
-						<option value="原版">原版</option>
-						<option value="科技">科技</option>
-						<option value="考试">考试</option>
-						<option value="生活百科">生活百科</option>
+						<option value="1">文学</option>
+						<option value="2">生活</option>
+						<option value="3">计算机</option>
+						<option value="4">外语</option>
+						<option value="5">经营</option>
+						<option value="6">励志</option>
+						<option value="7">社科</option>
+						<option value="8">学术</option>
+						<option value="9">少儿</option>
+						<option value="10">艺术</option>
+						<option value="11">原版</option>
+						<option value="12">科技</option>
+						<option value="13">考试</option>
+						<option value="14">生活百科</option>
 				</select>
 				</td>
 			</tr>
@@ -70,7 +70,7 @@
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品图片：</td>
 				<td class="ta_01" bgColor="#ffffff" colSpan="3">
 				<input
-					type="file" name="p.img_url" id="img_url" size="30" value=""/>
+					type="file" name="file" id="img_url" size="30" value=""/>
 				</td>
 			</tr>
 			<TR>

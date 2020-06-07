@@ -70,12 +70,13 @@
 								<div class="pagination">
 										<s:if test="#request.pageResults.pageCount > 1">
 										   <ul>
-												<li class="nextPage"><a
+										<li class="nextPage"><a
+
 													href="${pageContext.request.contextPath }/product/findAction_${whj}.action?pageNo=${pageResults.currentPage-1}">&lt;&lt;上一页</a>
 												</li>
 												<li>第  ${pageResults.currentPage}页/共${pageResults.pageCount}页</li>
 												<li class="nextPage"><a
-													href="${pageContext.request.contextPath }/product/findAction_${whj}.action?pageNo=${pageResults.pageNo}">&lt;&lt;下一页</a>
+													href="${pageContext.request.contextPath }/product/findAction_${whj}.action?pageNo=${pageResults.pageNo}">下一页&gt;&gt;</a>
 												</li>
 									     </ul>
 										</s:if>

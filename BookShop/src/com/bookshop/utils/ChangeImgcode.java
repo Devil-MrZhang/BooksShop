@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.bookshop.utils;
 
 import java.awt.Color;
