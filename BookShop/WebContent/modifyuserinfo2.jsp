@@ -50,14 +50,9 @@ function fun(){
 							
 						}
 						else{
-							alert("输入正确的密码");
-						
+							alert("输入正确的密码");	
 						}
 				}
-				
-				
-				
-				
 			}) ;
 		});
 	}) ;
@@ -66,13 +61,8 @@ function fun(){
 </script>
 
 <body class="main">
-
-
-
 	<jsp:include page="head.jsp" />
-
 	<jsp:include page="menu_search.jsp" />
-
 	<div id="divpagecontent">
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
