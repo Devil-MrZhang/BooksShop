@@ -17,16 +17,11 @@
 <script type="text/javascript">
 </script>
 <style type="text/css">
-#category{
-	position:absolute;
-	left:66%;
-	/* right:340px; */
-	top:66px;
-}
+
 </style>
 <body>
 	
-${pr.id}
+
 	<form id="userAction_save_do" name="Form1"
 		action="${pageContext.request.contextPath}/admin/AdminAction_update" method="post" enctype="multipart/form-data">
 	

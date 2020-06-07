@@ -4,6 +4,12 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+		<constant value="simple" name="struts.ui.theme"/>
+
+		<constant value="template" name="struts.ui.templateDir"/>
+		
+		<constant value="ftl" name="struts.ui.templateSuffix"/>
+		
 	<!-- 后台内容 -->
 		
 	<package name="admin" namespace="/admin" extends="struts-default">
