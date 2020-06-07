@@ -1,9 +1,8 @@
 <%@ page language="java" import="java.util.*"  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		alert("11111111");
+		 
 	  $("#imgs").click(function(){	   
 	   if($("#name").val()==""){
 		   alert("请输入所查询书名字！ ");
