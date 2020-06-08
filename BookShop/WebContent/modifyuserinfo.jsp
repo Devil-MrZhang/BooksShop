@@ -7,63 +7,8 @@
 <title>电子书城</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css" type="text/css" />
 </head>
-<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript">
-function fun(){
-    
-   
-	        alert("sadas");
-	        var vas = document.getElementById("pwdd").value;
-			var vas1 = document.getElementById("pwd").value;	
-			alert(vas);
-			if(vas!=vas1){
-			alert("两次密码输入不一致");
-			}else{
-				$('#tijiao').removeAttr("disabled");
-			}
-		
-			}
-	/* --------------------------- */
-	
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 
-</script>
-
-<script type="text/javascript">
-	$(function(){
-		
-
-		$('#ypwd').blur(function(){
-			
-			 var params = {
-						ypwd :document.getElementById("ypwd").value,
-					};
-			 
-			$.post("ajax.action" , params, function(data){
-				
-				var jsonObject = eval("(" + data + ")");
-				
-				if (jsonObject != null) {
-					var song = jsonObject.songList;
-						if(song==1)	{
-							alert("验证过关");
-							
-							
-						}
-						else{
-							alert("输入正确的密码");
-						
-						}
-				}
-				
-				
-				
-				
-			}) ;
-		});
-	}) ;
- 
- 
-</script>
 
 <body class="main">
 
@@ -91,7 +36,7 @@ function fun(){
 						<tr>
 							<td class="listtd"><img src="images/miniicon.gif" width="9"
 								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a
-								href="${pageContext.request.contextPath }/modifyuserinfo2.jsp">用户密码修改</a>
+								href="${pageContext.request.contextPath }/modifyuserinfopwd.jsp">用户密码修改</a>
 							</td>
 						</tr>
 
@@ -140,10 +85,9 @@ function fun(){
 										
 										<tr>
 											<td style="text-align:right">性别：</td>
-											<td colspan="2">&nbsp;&nbsp;<input type="radio"
-												name="gender" value="男"  />
-												男 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-												type="radio" name="gender" value="女"/> 女</td>
+											<td colspan="2">&nbsp;&nbsp;
+											<input type="radio" name="gender" value="1" checked  />${user.gender eq "1"?"男":"女"} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="radio" name="gender" value="2"/> ${user.gender eq "2"?"女":"男"}</td>
 										</tr>
 										<tr>
 											<td style="text-align:right">联系方式：</td>

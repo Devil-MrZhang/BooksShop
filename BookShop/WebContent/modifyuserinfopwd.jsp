@@ -7,7 +7,7 @@
 <title>电子书城</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css" type="text/css" />
 </head>
-<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script type="text/javascript">
 function fun(){
     
@@ -18,11 +18,19 @@ function fun(){
 			
 			if(vas!=vas1){
 			alert("两次密码输入不一致");
-			}else{
+			$("#tijiao").attr("disabled","false");
+			}else if(vas.length<3){
+			$("#id2").html("密码长度太低。");
+			$("#id2").css({"color":"red"});
+			$("#tijiao").attr("disabled","false");
+			}
+			
+			
+			else {
+				$("#tijiao").css({opacity:.8});
 				$('#tijiao').removeAttr("disabled");
-			}
-		
-			}
+	
+}}
 	/* --------------------------- */
 	
 
@@ -31,7 +39,7 @@ function fun(){
 <script type="text/javascript">
 	$(function(){
 		
-
+		$("#tijiao").css({opacity:.4});
 		$('#ypwd').blur(function(){
 			
 			 var params = {
@@ -45,12 +53,18 @@ function fun(){
 				if (jsonObject != null) {
 					var song = jsonObject.songList;
 						if(song==1)	{
-							alert("验证过关");
+							
+							$("#ppwwdd").css({"color":"red"});
+							$('#tijiao').removeAttr("disabled");
+							$("#ppwwdd").html(" 密码正确。");
 							
 							
 						}
 						else{
-							alert("输入正确的密码");	
+						
+							
+							$("#ppwwdd").html("输入正确的密码。");
+							$("#ppwwdd").css({"color":"red"});
 						}
 				}
 			}) ;
@@ -131,13 +145,13 @@ function fun(){
 											<td style="text-align:right">当前密码：</td>
 											<td><input id="ypwd" type="password" name="ypwd"
 												class="textinput" /> </td>
-											<td><font  color="#999999">修改密码前，请先验证是否是本人。</font></td>
+											<td><font id="ppwwdd"  color="#999999">修改密码前，请先验证是否是本人。</font></td>
 										</tr>
 										<tr>
 											<td style="text-align:right">修改密码：</td>
 											<td><input id="pwd" type="password" name="pwd"
 												class="textinput" /></td>
-											<td><font color="#999999">密码设置至少6位，请区分大小写</font></td>
+											<td><font id="id2" color="#999999">密码设置至少6位，请区分大小写</font></td>
 										</tr>
 										<tr>
 											<td style="text-align:right">重复密码：</td>

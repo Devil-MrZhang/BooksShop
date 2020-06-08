@@ -32,7 +32,7 @@
 							<tr>
 							<td class="listtd"><img src="images/miniicon.gif" width="9"
 								height="6" />&nbsp;&nbsp;&nbsp;&nbsp; <a
-								href="${pageContext.request.contextPath }/modifyuserinfo2.jsp">用户密码修改</a>
+								href="${pageContext.request.contextPath }/modifyuserinfopwd.jsp">用户密码修改</a>
 							</td>
 						</tr>
 						
