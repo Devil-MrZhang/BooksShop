@@ -16,6 +16,8 @@
 		<img src="ad/index_ad.jpg" />
 	</div>
 
+
+
 	<div id="divcontent">
 		<table width="900px" border="0" cellspacing="0">
 			<tr>
