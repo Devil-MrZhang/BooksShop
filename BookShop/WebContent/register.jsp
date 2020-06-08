@@ -71,9 +71,9 @@
 							<tr>
 								<td style="text-align:right">性别：</td>
 								<td colspan="2">&nbsp;&nbsp;<input type="radio"
-									name="user.gender" value="男" checked="checked" /> 男
+									name="user.gender" value="1" checked="checked" /> 男
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"
-									name="user.gender" value="女" /> 女</td>
+									name="user.gender" value="2" /> 女</td>
 							</tr>
 							<tr>
 								<td style="text-align:right">联系电话：</td>
