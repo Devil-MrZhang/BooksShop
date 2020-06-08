@@ -22,6 +22,30 @@ function changeSecond() {
 	second.innerHTML = svalue;
 }
 
+
+
+function startSecond1() {
+
+	interval = window.setInterval("changeSecond1()", 1000);
+
+};
+
+function changeSecond1() {
+	var second = document.getElementById("second");
+
+	var svalue = second.innerHTML;
+
+	svalue = svalue - 1;
+
+	if (svalue == 0) {
+		window.clearInterval(interval);
+		location.href = "../login.jsp";
+		return;
+	}
+
+	second.innerHTML = svalue;
+}
+
 //获取XMLHttpRequest对象
 function getXMLHttpRequest() {
 	var xmlhttp;
