@@ -138,6 +138,12 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public String register() {
+		if (user.getGender().equals("男")) {
+			user.setGender("1");
+		}else {
+			user.setGender("2");
+			
+		}
 		userService.register(user);
 
 		return "register";
