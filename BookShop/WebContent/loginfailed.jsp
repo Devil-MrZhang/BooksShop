@@ -8,7 +8,7 @@
 <title>电子书城</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/my.js">
 	
 </script>
 </head>
