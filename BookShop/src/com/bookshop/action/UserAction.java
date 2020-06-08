@@ -138,6 +138,7 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public String register() {
+
 		userService.register(user);
 
 		return "register";
