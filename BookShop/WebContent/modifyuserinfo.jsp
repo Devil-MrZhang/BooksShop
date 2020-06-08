@@ -86,8 +86,8 @@
 										<tr>
 											<td style="text-align:right">性别：</td>
 											<td colspan="2">&nbsp;&nbsp;
-											<input type="radio" name="gender" value="1" checked  />${user.gender eq "1"?"男":"女"} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<input type="radio" name="gender" value="2"/> ${user.gender eq "2"?"女":"男"}</td>
+											<input type="radio" name="gender" value="${user.gender eq '1'?'1':'2'}" checked  />${user.gender eq "1"?"男":"女"} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="radio" name="gender" value="${user.gender eq '1'?'2':'1'}"/> ${user.gender eq "1"?"女":"男"}</td>
 										</tr>
 										<tr>
 											<td style="text-align:right">联系方式：</td>
