@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 											<div class="divbookcover">
 												<p>
-													<img src="${productInfo.img_url}" width="213" height="269" border="0" />
+													<img src="${pageContext.request.contextPath }/${productInfo.img_url}" width="213" height="269" border="0" />
 												</p>
 											</div>
 

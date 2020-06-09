@@ -4,6 +4,7 @@
 package com.bookshop.action;
 
 import java.io.File;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -246,10 +247,10 @@ public class AdminAction extends ActionSupport {
 
 
 		String dirPath = ServletActionContext.getServletContext().getRealPath("upload");
-	
+		fileFileName=UUID.randomUUID()+".jpg";
 		File target=new File(dirPath+"/"+fileFileName);
 		file.renameTo(target);
-		p.setImg_url(dirPath+"/"+fileFileName);
+		p.setImg_url("upload"+"/"+fileFileName);
 		service.addBooks(p);
 		System.out.println(target);
 		System.out.println("------"+"上传的文件名"+fileFileName);
@@ -278,15 +279,15 @@ public class AdminAction extends ActionSupport {
 		System.out.println("1111111111111"+category);
 		
 		String dirPath = ServletActionContext.getServletContext().getRealPath("upload");
-		
+		fileFileName=UUID.randomUUID()+".jpg";
 		File target=new File(dirPath+"/"+fileFileName);
 		file.renameTo(target);
-		
+		System.out.println("update-----------"+fileFileName);
 		
 		Product pro = service.getProductById(id);
 		pro.setName(p.getName());
 		pro.setPrice(p.getPrice());
-		pro.setImg_url(dirPath+"/"+fileFileName);
+		pro.setImg_url("upload"+"/"+fileFileName);
 		pro.setPnum(p.getPnum());
 		pro.setCategory(category);
 		pro.setDescription(p.getDescription());

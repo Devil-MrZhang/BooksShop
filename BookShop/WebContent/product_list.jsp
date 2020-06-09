@@ -49,7 +49,7 @@
 												<div class="divbookpic">
 													<p>
 														<a href="${pageContext.request.contextPath }/product/productAction_productInfo?productInfo.id=${book.id}&&productInfo.name=${book.name}&&productInfo.price=${book.price}&&productInfo.category=${book.category}&&productInfo.description=${book.description}&&productInfo.img_url=${book.img_url}&&productInfo.pnum=${book.pnum}"><img
-															src="${book.img_url}"
+															src="${pageContext.request.contextPath }/${book.img_url}"
 															width="115" height="129" border="0" /> </a>
 													</p>
 												</div>
