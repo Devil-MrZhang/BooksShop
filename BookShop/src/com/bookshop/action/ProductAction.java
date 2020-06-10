@@ -72,7 +72,53 @@ public class ProductAction extends ActionSupport {
 	
 	
 	public String productInfo(){
-		System.out.println("0000000000000000"+productInfo);
+		
+		
+		switch (productInfo.getCategory()) {
+		case "1":
+			productInfo.setCategory("文学");
+			break;
+		case "2":
+			productInfo.setCategory("生活");
+			break;
+		case "3":
+			productInfo.setCategory("计算机");
+			break;
+		case "4":
+			productInfo.setCategory("外语");
+			break;
+		case "5":
+			productInfo.setCategory("经营");
+			break;
+		case "6":
+			productInfo.setCategory("励志");
+			break;
+		case "7":
+			productInfo.setCategory("社科");
+			break;
+		case "8":
+			productInfo.setCategory("学术");
+			break;
+		case "9":
+			productInfo.setCategory("少儿");
+			break;
+		case "10":
+			productInfo.setCategory("艺术");
+			break;
+		case "11":
+			productInfo.setCategory("原版");
+			break;
+		case "12":
+			productInfo.setCategory("科技");
+			break;
+		case "13":
+			productInfo.setCategory("考试");
+			break;
+		case "14":
+			productInfo.setCategory("生活百科");
+			break;
+
+		}
 		
 		return "productInfo";
 	}
@@ -87,7 +133,52 @@ public class ProductAction extends ActionSupport {
 	public String addCart(){
 		String id=req.getParameter("id");
 		Product product = productService.getProductById(Integer.parseInt(id));
-		
+		switch (product.getCategory()) {
+		case "1":
+			product.setCategory("文学");
+			break;
+		case "2":
+			product.setCategory("生活");
+			break;
+		case "3":
+			product.setCategory("计算机");
+			break;
+		case "4":
+			product.setCategory("外语");
+			break;
+		case "5":
+			product.setCategory("经营");
+			break;
+		case "6":
+			product.setCategory("励志");
+			break;
+		case "7":
+			product.setCategory("社科");
+			break;
+		case "8":
+			product.setCategory("学术");
+			break;
+		case "9":
+			product.setCategory("少儿");
+			break;
+		case "10":
+			product.setCategory("艺术");
+			break;
+		case "11":
+			product.setCategory("原版");
+			break;
+		case "12":
+			product.setCategory("科技");
+			break;
+		case "13":
+			product.setCategory("考试");
+			break;
+		case "14":
+			product.setCategory("生活百科");
+			break;
+
+		}
+
 		Map<Product, String> cart = (Map<Product, String>) session.getAttribute("cart");
 		int num = 1;
 	

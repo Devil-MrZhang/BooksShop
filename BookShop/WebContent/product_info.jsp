@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -57,7 +57,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<hr />名称：<font>${productInfo.name}</font>
 											<hr />售价：<font color="#FF0000">￥:${productInfo.price}元</font>
 											<hr /> 类别：${productInfo.category}
-
+											
+													
 											<hr />
 											<p>
 												<b>内容简介：${productInfo.description}</b>
