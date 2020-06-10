@@ -105,7 +105,7 @@ public class UserAction extends ActionSupport {
 	//修改用户密码
 	public String modiry2() {
 		System.out.println("---密码："+pwd+"二次密码："+pwdd);
-		if(pwd.equals(pwdd)&&pwd!=" "){
+		if(pwd.equals(pwdd)&&pwd!=""){
 			User ue = (User)session.getAttribute("user");
 			System.out.println(ue.getPassword());
 			ue.setPassword(pwd);

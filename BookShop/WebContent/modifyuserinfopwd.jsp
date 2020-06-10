@@ -41,28 +41,16 @@ function fun(){
 		
 		$("#tijiao").css({opacity:.4});
 		$('#ypwd').blur(function(){
-			
-			 var params = {
-						ypwd :document.getElementById("ypwd").value,
-					};
-			 
+			 var params = {ypwd :document.getElementById("ypwd").value,};
 			$.post("ajax.action" , params, function(data){
-				
 				var jsonObject = eval("(" + data + ")");
-				
 				if (jsonObject != null) {
 					var song = jsonObject.songList;
 						if(song==1)	{
-							
-							$("#ppwwdd").css({"color":"red"});
 							$('#tijiao').removeAttr("disabled");
 							$("#ppwwdd").html(" 密码正确。");
-							
-							
 						}
 						else{
-						
-							
 							$("#ppwwdd").html("输入正确的密码。");
 							$("#ppwwdd").css({"color":"red"});
 						}
