@@ -32,7 +32,7 @@
 								<td><table width="100%" border="0" cellspacing="0">
 										<tr>
 											<td><img src="${pageContext.request.contextPath }/images/buy2.gif" width="635" height="38" />
-												<p>您好：${username }先生！欢迎您来到商城结算中心</p></td>
+												<p>您好：${user.username }先生！欢迎您来到商城结算中心</p></td>
 										</tr>
 										<tr>
 											<td><table cellspacing="1" class="carttable">

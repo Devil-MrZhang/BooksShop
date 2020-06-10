@@ -134,6 +134,7 @@ public class AdminAction extends ActionSupport {
 				break;
 			}
 		}
+		System.out.println("list-------------"+books);
 	
 		return "list";
 	}
